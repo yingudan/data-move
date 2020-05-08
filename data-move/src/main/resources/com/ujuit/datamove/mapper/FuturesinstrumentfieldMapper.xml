@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.futuresinstrumentfield.model.Futuresinstrumentfield">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.futuresinstrumentfield.model.Futuresinstrumentfield">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="trade_date" property="tradeDate"
+			jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,content,trade_date,update_time
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.futuresinstrumentfield.model.Futuresinstrumentfield"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_futures_instrument_field(
+		id,content,trade_date,update_time,check)
+		values (
+		#{id,jdbcType=INTEGER},#{content,jdbcType=VARCHAR},#{tradeDate,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP},#{check,jdbcType=BIT}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_futures_instrument_field
+		(content,trade_date,update_time) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.content},
+			#{item.tradeDate},
+			#{item.updateTime})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.futuresinstrumentfield.model.Futuresinstrumentfield">
+		UPDATE t_futures_instrument_field
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeDate != null">
+				trade_date =
+				#{tradeDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time =
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="check != null">
+				check = #{check,jdbcType=BIT},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_futures_instrument_field WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_futures_instrument_field
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_futures_instrument_field
+	</select>
+</mapper>

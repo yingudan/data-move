@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.triggercondition.model.Triggercondition">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.triggercondition.model.Triggercondition">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="stock_code" property="stockCode"
+			jdbcType="VARCHAR" />
+		<result column="stock_name" property="stockName"
+			jdbcType="VARCHAR" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="position_type" property="positionType"
+			jdbcType="VARCHAR" />
+		<result column="price_type" property="priceType"
+			jdbcType="VARCHAR" />
+		<result column="hedge_flag_type" property="hedgeFlagType"
+			jdbcType="VARCHAR" />
+		<result column="entrust_price" property="entrustPrice"
+			jdbcType="DECIMAL" />
+		<result column="entrust_number" property="entrustNumber"
+			jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="run_status" property="runStatus"
+			jdbcType="VARCHAR" />
+		<result column="is_tiggered" property="isTiggered"
+			jdbcType="VARCHAR" />
+		<result column="tigger_condition" property="tiggerCondition"
+			jdbcType="VARCHAR" />
+		<result column="tigger_value" property="tiggerValue"
+			jdbcType="DECIMAL" />
+		<result column="source_order_id" property="sourceOrderId"
+			jdbcType="INTEGER" />
+		<result column="target_order_id" property="targetOrderId"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="lastmodify_time" property="lastmodifyTime"
+			jdbcType="TIMESTAMP" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="delete_flag" property="deleteFlag"
+			jdbcType="VARCHAR" />
+		<result column="client_tab" property="clientTab"
+			jdbcType="VARCHAR" />
+		<result column="tigger_price_type" property="tiggerPriceType"
+			jdbcType="VARCHAR" />
+		<result column="source_type" property="sourceType"
+			jdbcType="INTEGER" />
+		<result column="source_id" property="sourceId"
+			jdbcType="INTEGER" />
+		<result column="order_status" property="orderStatus"
+			jdbcType="INTEGER" />
+		<result column="order_times" property="orderTimes"
+			jdbcType="INTEGER" />
+		<result column="last_trigger_time" property="lastTriggerTime"
+			jdbcType="TIMESTAMP" />
+		<result column="modify_time" property="modifyTime"
+			jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,stock_code,stock_name,direction,position_type,price_type,hedge_flag_type,entrust_price,entrust_number,type,run_status,is_tiggered,tigger_condition,tigger_value,source_order_id,target_order_id,create_time,lastmodify_time,sub_account_id,delete_flag
+		,client_tab,tigger_price_type,source_type,source_id,order_status,order_times,last_trigger_time,modify_time,remark
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.triggercondition.model.Triggercondition"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_trigger_condition(
+		id,stock_code,stock_name,direction,position_type,price_type
+		,hedge_flag_type,entrust_price,entrust_number,type,run_status,is_tiggered
+		,tigger_condition,tigger_value,source_order_id,target_order_id,create_time,lastmodify_time
+		,sub_account_id,delete_flag,client_tab,tigger_price_type,source_type,source_id
+		,order_status,order_times,last_trigger_time,modify_time,remark)
+		values
+		(
+		#{id,jdbcType=INTEGER},#{stockCode,jdbcType=VARCHAR},#{stockName,jdbcType=VARCHAR},#{direction,jdbcType=VARCHAR},#{positionType,jdbcType=VARCHAR}
+		,#{priceType,jdbcType=VARCHAR},#{hedgeFlagType,jdbcType=VARCHAR},#{entrustPrice,jdbcType=DECIMAL},#{entrustNumber,jdbcType=INTEGER},#{type,jdbcType=VARCHAR}
+		,#{runStatus,jdbcType=VARCHAR},#{isTiggered,jdbcType=VARCHAR},#{tiggerCondition,jdbcType=VARCHAR},#{tiggerValue,jdbcType=DECIMAL},#{sourceOrderId,jdbcType=INTEGER}
+		,#{targetOrderId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{lastmodifyTime,jdbcType=TIMESTAMP},#{subAccountId,jdbcType=INTEGER},#{deleteFlag,jdbcType=VARCHAR}
+		,#{clientTab,jdbcType=VARCHAR},#{tiggerPriceType,jdbcType=VARCHAR},#{sourceType,jdbcType=INTEGER},#{sourceId,jdbcType=INTEGER},#{orderStatus,jdbcType=INTEGER}
+		,#{orderTimes,jdbcType=INTEGER},#{lastTriggerTime,jdbcType=TIMESTAMP},#{modifyTime,jdbcType=TIMESTAMP},#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_trigger_condition
+		(stock_code,stock_name,direction,position_type,price_type
+		,hedge_flag_type,entrust_price,entrust_number,type,run_status,is_tiggered
+		,tigger_condition,tigger_value,source_order_id,target_order_id,create_time,lastmodify_time
+		,sub_account_id,delete_flag,client_tab,tigger_price_type,source_type,source_id
+		,order_status,order_times,last_trigger_time,modify_time,remark) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.stockCode},
+			#{item.stockName},
+			#{item.direction},
+			#{item.positionType},
+			#{item.priceType},
+			#{item.hedgeFlagType},
+			#{item.entrustPrice},
+			#{item.entrustNumber},
+			#{item.type},
+			#{item.runStatus},
+			#{item.isTiggered},
+			#{item.tiggerCondition},
+			#{item.tiggerValue},
+			#{item.sourceOrderId},
+			#{item.targetOrderId},
+			#{item.createTime},
+			#{item.lastmodifyTime},
+			#{item.subAccountId},
+			#{item.deleteFlag},
+			#{item.clientTab},
+			#{item.tiggerPriceType},
+			#{item.sourceType},
+			#{item.sourceId},
+			#{item.orderStatus},
+			#{item.orderTimes},
+			#{item.lastTriggerTime},
+			#{item.modifyTime},
+			#{item.remark})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.triggercondition.model.Triggercondition">
+		UPDATE t_trigger_condition
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="stockCode != null">
+				stock_code =
+				#{stockCode,jdbcType=VARCHAR},
+			</if>
+			<if test="stockName != null">
+				stock_name =
+				#{stockName,jdbcType=VARCHAR},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="positionType != null">
+				position_type =
+				#{positionType,jdbcType=VARCHAR},
+			</if>
+			<if test="priceType != null">
+				price_type =
+				#{priceType,jdbcType=VARCHAR},
+			</if>
+			<if test="hedgeFlagType != null">
+				hedge_flag_type =
+				#{hedgeFlagType,jdbcType=VARCHAR},
+			</if>
+			<if test="entrustPrice != null">
+				entrust_price =
+				#{entrustPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="entrustNumber != null">
+				entrust_number =
+				#{entrustNumber,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="runStatus != null">
+				run_status =
+				#{runStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="isTiggered != null">
+				is_tiggered =
+				#{isTiggered,jdbcType=VARCHAR},
+			</if>
+			<if test="tiggerCondition != null">
+				tigger_condition =
+				#{tiggerCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="tiggerValue != null">
+				tigger_value =
+				#{tiggerValue,jdbcType=DECIMAL},
+			</if>
+			<if test="sourceOrderId != null">
+				source_order_id =
+				#{sourceOrderId,jdbcType=INTEGER},
+			</if>
+			<if test="targetOrderId != null">
+				target_order_id =
+				#{targetOrderId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastmodifyTime != null">
+				lastmodify_time =
+				#{lastmodifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="deleteFlag != null">
+				delete_flag =
+				#{deleteFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="clientTab != null">
+				client_tab =
+				#{clientTab,jdbcType=VARCHAR},
+			</if>
+			<if test="tiggerPriceType != null">
+				tigger_price_type =
+				#{tiggerPriceType,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceType != null">
+				source_type =
+				#{sourceType,jdbcType=INTEGER},
+			</if>
+			<if test="sourceId != null">
+				source_id =
+				#{sourceId,jdbcType=INTEGER},
+			</if>
+			<if test="orderStatus != null">
+				order_status =
+				#{orderStatus,jdbcType=INTEGER},
+			</if>
+			<if test="orderTimes != null">
+				order_times =
+				#{orderTimes,jdbcType=INTEGER},
+			</if>
+			<if test="lastTriggerTime != null">
+				last_trigger_time =
+				#{lastTriggerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyTime != null">
+				modify_time =
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_trigger_condition WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_trigger_condition
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_trigger_condition
+	</select>
+</mapper>

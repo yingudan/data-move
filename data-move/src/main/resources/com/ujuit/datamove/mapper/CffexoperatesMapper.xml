@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.cffexoperates.model.Cffexoperates">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.cffexoperates.model.Cffexoperates">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="position_type" property="positionType"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="trade_day" property="tradeDay"
+			jdbcType="TIMESTAMP" />
+		<result column="front_id" property="frontId" jdbcType="INTEGER" />
+		<result column="session_id" property="sessionId"
+			jdbcType="INTEGER" />
+		<result column="order_ref" property="orderRef"
+			jdbcType="VARCHAR" />
+		<result column="number" property="number" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="status_desc" property="statusDesc"
+			jdbcType="VARCHAR" />
+		<result column="deal_total_number" property="dealTotalNumber"
+			jdbcType="INTEGER" />
+		<result column="deal_total_amount" property="dealTotalAmount"
+			jdbcType="DECIMAL" />
+		<result column="exchange_id" property="exchangeId"
+			jdbcType="VARCHAR" />
+		<result column="order_sys_id" property="orderSysId"
+			jdbcType="VARCHAR" />
+		<result column="close_position_detail_id"
+			property="closePositionDetailId" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,order_id,direction,position_type,create_time,master_id,trade_day,front_id,session_id,order_ref,number,status,status_desc,deal_total_number,deal_total_amount,exchange_id,order_sys_id,close_position_detail_id
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.cffexoperates.model.Cffexoperates"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_cffex_operates(
+		id,order_id,direction,position_type,create_time,master_id
+		,trade_day,front_id,session_id,order_ref,number,status
+		,status_desc,deal_total_number,deal_total_amount,exchange_id,order_sys_id,close_position_detail_id
+		)
+		values (
+		#{id,jdbcType=INTEGER},#{orderId,jdbcType=INTEGER},#{direction,jdbcType=VARCHAR},#{positionType,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}
+		,#{masterId,jdbcType=INTEGER},#{tradeDay,jdbcType=TIMESTAMP},#{frontId,jdbcType=INTEGER},#{sessionId,jdbcType=INTEGER},#{orderRef,jdbcType=VARCHAR}
+		,#{number,jdbcType=INTEGER},#{status,jdbcType=VARCHAR},#{statusDesc,jdbcType=VARCHAR},#{dealTotalNumber,jdbcType=INTEGER},#{dealTotalAmount,jdbcType=DECIMAL}
+		,#{exchangeId,jdbcType=VARCHAR},#{orderSysId,jdbcType=VARCHAR},#{closePositionDetailId,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_cffex_operates
+		(order_id,direction,position_type,create_time,master_id
+		,trade_day,front_id,session_id,order_ref,number,status
+		,status_desc,deal_total_number,deal_total_amount,exchange_id,order_sys_id,close_position_detail_id
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.orderId},
+			#{item.direction},
+			#{item.positionType},
+			#{item.createTime},
+			#{item.masterId},
+			#{item.tradeDay},
+			#{item.frontId},
+			#{item.sessionId},
+			#{item.orderRef},
+			#{item.number},
+			#{item.status},
+			#{item.statusDesc},
+			#{item.dealTotalNumber},
+			#{item.dealTotalAmount},
+			#{item.exchangeId},
+			#{item.orderSysId},
+			#{item.closePositionDetailId})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.cffexoperates.model.Cffexoperates">
+		UPDATE t_cffex_operates
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="positionType != null">
+				position_type =
+				#{positionType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="tradeDay != null">
+				trade_day =
+				#{tradeDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="frontId != null">
+				front_id = #{frontId,jdbcType=INTEGER},
+			</if>
+			<if test="sessionId != null">
+				session_id =
+				#{sessionId,jdbcType=INTEGER},
+			</if>
+			<if test="orderRef != null">
+				order_ref =
+				#{orderRef,jdbcType=VARCHAR},
+			</if>
+			<if test="number != null">
+				number = #{number,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="statusDesc != null">
+				status_desc =
+				#{statusDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="dealTotalNumber != null">
+				deal_total_number =
+				#{dealTotalNumber,jdbcType=INTEGER},
+			</if>
+			<if test="dealTotalAmount != null">
+				deal_total_amount =
+				#{dealTotalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="exchangeId != null">
+				exchange_id =
+				#{exchangeId,jdbcType=VARCHAR},
+			</if>
+			<if test="orderSysId != null">
+				order_sys_id =
+				#{orderSysId,jdbcType=VARCHAR},
+			</if>
+			<if test="closePositionDetailId != null">
+				close_position_detail_id
+				= #{closePositionDetailId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_cffex_operates WHERE id = #{id}
+	</delete>
+	
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_cffex_operates
+		where id = #{id}
+	</select>
+</mapper>

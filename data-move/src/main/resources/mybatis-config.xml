@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+		<setting name="callSettersOnNulls" value="true" />	<!-- 返回空字段 -->
+	</settings>
+	
+	
+	<typeHandlers>
+		<typeHandler
+			handler="com.ujuit.sysmanager.core.mybatis.handler.UUIDType"
+			javaType="java.util.UUID" jdbcType="VARCHAR" />
+	</typeHandlers>
+
+	<plugins>
+		<plugin
+			interceptor="com.ujuit.sysmanager.core.mybatis.PaginationInterceptor">
+			<property name="dialect" value="multi" />
+
+		</plugin>
+	</plugins>
+
+	<mappers>
+		<!-- 系统部分 -->
+		<mapper resource="com/ujuit/sysmanager/xml/mapper/Sys.xml" />
+		<mapper
+			resource="com/ujuit/sysmanager/xml/mapper/SModuleMapper.xml" />
+		<mapper
+			resource="com/ujuit/sysmanager/xml/mapper/SRoleMapper.xml" />
+		<mapper
+			resource="com/ujuit/sysmanager/xml/mapper/SRoleModuleMapper.xml" />
+		<mapper
+			resource="com/ujuit/sysmanager/xml/mapper/SUserMapper.xml" />
+		<mapper
+			resource="com/ujuit/sysmanager/xml/mapper/SUserRoleMapper.xml" />
+		<!-- 系统部分结束 -->
+	</mappers>
+</configuration>

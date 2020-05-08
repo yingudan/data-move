@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.mastertemp.model.Mastertemp">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.mastertemp.model.Mastertemp">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="initialCapital" property="initialcapital"
+			jdbcType="DECIMAL" />
+		<result column="availableCapital" property="availablecapital"
+			jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="password"
+			jdbcType="VARCHAR" />
+		<result column="futuresCompany" property="futurescompany"
+			jdbcType="VARCHAR" />
+		<result column="theirBroker" property="theirbroker"
+			jdbcType="VARCHAR" />
+		<result column="masterId" property="masterid"
+			jdbcType="INTEGER" />
+		<result column="tsbId" property="tsbid" jdbcType="INTEGER" />
+		<result column="tsInfoId" property="tsinfoid"
+			jdbcType="INTEGER" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+		<result column="tab" property="tab" jdbcType="BIT" />
+		<result column="trade_type" property="tradeType"
+			jdbcType="INTEGER" />
+		<result column="trade_account" property="tradeAccount"
+			jdbcType="VARCHAR" />
+		<result column="trade_password" property="tradePassword"
+			jdbcType="VARCHAR" />
+		<result column="credit" property="credit" jdbcType="BIT" />
+		<result column="future_company_id" property="futureCompanyId"
+			jdbcType="INTEGER" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="over_time" property="overTime"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="virtual_allmoney" property="virtualAllmoney"
+			jdbcType="DECIMAL" />
+		<result column="virtual_disposition"
+			property="virtualDisposition" jdbcType="DECIMAL" />
+		<result column="descrp" property="descrp" jdbcType="VARCHAR" />
+		<result column="exception_status" property="exceptionStatus"
+			jdbcType="VARCHAR" />
+		<result column="master_group_id" property="masterGroupId"
+			jdbcType="INTEGER" />
+		<result column="host_ip" property="hostIp" jdbcType="VARCHAR" />
+		<result column="host_port" property="hostPort"
+			jdbcType="VARCHAR" />
+		<result column="host_mac" property="hostMac" jdbcType="VARCHAR" />
+		<result column="auth_code" property="authCode"
+			jdbcType="VARCHAR" />
+		<result column="app_id" property="appId" jdbcType="VARCHAR" />
+		<result column="user_product_info" property="userProductInfo"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,type,company,initialCapital,availableCapital,status,account,password,futuresCompany,theirBroker,masterId,tsbId,tsInfoId,disposition,tab,trade_type,trade_account,trade_password,credit,future_company_id
+		,capital_amount,over_time,create_time,virtual_allmoney,virtual_disposition,descrp,exception_status,master_group_id,host_ip,host_port,host_mac,auth_code,app_id,user_product_info
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.mastertemp.model.Mastertemp"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_master_temp(
+		type,company,initialCapital,availableCapital,status
+		,account,password,futuresCompany,theirBroker,masterId,tsbId
+		,tsInfoId,disposition,tab,trade_type,trade_account,trade_password
+		,credit,future_company_id,capital_amount,over_time,create_time,virtual_allmoney
+		,virtual_disposition,descrp,exception_status,master_group_id,host_ip,host_port
+		,host_mac,auth_code,app_id,user_product_info)
+		values (
+		#{type,jdbcType=VARCHAR},#{company,jdbcType=VARCHAR},#{initialcapital,jdbcType=DECIMAL},#{availablecapital,jdbcType=DECIMAL}
+		,#{status,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{futurescompany,jdbcType=VARCHAR},#{theirbroker,jdbcType=VARCHAR}
+		,#{masterid,jdbcType=INTEGER},#{tsbid,jdbcType=INTEGER},#{tsinfoid,jdbcType=INTEGER},#{disposition,jdbcType=DECIMAL},#{tab,jdbcType=BIT}
+		,#{tradeType,jdbcType=INTEGER},#{tradeAccount,jdbcType=VARCHAR},#{tradePassword,jdbcType=VARCHAR},#{credit,jdbcType=BIT},#{futureCompanyId,jdbcType=INTEGER}
+		,#{capitalAmount,jdbcType=DECIMAL},#{overTime,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{virtualAllmoney,jdbcType=DECIMAL},#{virtualDisposition,jdbcType=DECIMAL}
+		,#{descrp,jdbcType=VARCHAR},#{exceptionStatus,jdbcType=VARCHAR},#{masterGroupId,jdbcType=INTEGER},#{hostIp,jdbcType=VARCHAR},#{hostPort,jdbcType=VARCHAR}
+		,#{hostMac,jdbcType=VARCHAR},#{authCode,jdbcType=VARCHAR},#{appId,jdbcType=VARCHAR},#{userProductInfo,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_master_temp
+		(type,company,initialCapital,availableCapital,status
+		,account,password,futuresCompany,theirBroker,masterId,tsbId
+		,tsInfoId,disposition,tab,trade_type,trade_account,trade_password
+		,credit,future_company_id,capital_amount,over_time,create_time,virtual_allmoney
+		,virtual_disposition,descrp,exception_status,master_group_id,host_ip,host_port
+		,host_mac,auth_code,app_id,user_product_info) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.type},
+			#{item.company},
+			#{item.initialcapital},
+			#{item.availablecapital},
+			#{item.status},
+			#{item.account},
+			#{item.password},
+			#{item.futurescompany},
+			#{item.theirbroker},
+			#{item.masterid},
+			#{item.tsbid},
+			#{item.tsinfoid},
+			#{item.disposition},
+			#{item.tab},
+			#{item.tradeType},
+			#{item.tradeAccount},
+			#{item.tradePassword},
+			#{item.credit},
+			#{item.futureCompanyId},
+			#{item.capitalAmount},
+			#{item.overTime},
+			#{item.createTime},
+			#{item.virtualAllmoney},
+			#{item.virtualDisposition},
+			#{item.descrp},
+			#{item.exceptionStatus},
+			#{item.masterGroupId},
+			#{item.hostIp},
+			#{item.hostPort},
+			#{item.hostMac},
+			#{item.authCode},
+			#{item.appId},
+			#{item.userProductInfo})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.mastertemp.model.Mastertemp">
+		UPDATE t_master_temp
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				company = #{company,jdbcType=VARCHAR},
+			</if>
+			<if test="initialcapital != null">
+				initialCapital =
+				#{initialcapital,jdbcType=DECIMAL},
+			</if>
+			<if test="availablecapital != null">
+				availableCapital =
+				#{availablecapital,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="account != null">
+				account = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password =
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="futurescompany != null">
+				futuresCompany =
+				#{futurescompany,jdbcType=VARCHAR},
+			</if>
+			<if test="theirbroker != null">
+				theirBroker =
+				#{theirbroker,jdbcType=VARCHAR},
+			</if>
+			<if test="masterid != null">
+				masterId =
+				#{masterid,jdbcType=INTEGER},
+			</if>
+			<if test="tsbid != null">
+				tsbId = #{tsbid,jdbcType=INTEGER},
+			</if>
+			<if test="tsinfoid != null">
+				tsInfoId =
+				#{tsinfoid,jdbcType=INTEGER},
+			</if>
+			<if test="disposition != null">
+				disposition =
+				#{disposition,jdbcType=DECIMAL},
+			</if>
+			<if test="tab != null">
+				tab = #{tab,jdbcType=BIT},
+			</if>
+			<if test="tradeType != null">
+				trade_type =
+				#{tradeType,jdbcType=INTEGER},
+			</if>
+			<if test="tradeAccount != null">
+				trade_account =
+				#{tradeAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="tradePassword != null">
+				trade_password =
+				#{tradePassword,jdbcType=VARCHAR},
+			</if>
+			<if test="credit != null">
+				credit = #{credit,jdbcType=BIT},
+			</if>
+			<if test="futureCompanyId != null">
+				future_company_id =
+				#{futureCompanyId,jdbcType=INTEGER},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="overTime != null">
+				over_time =
+				#{overTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="virtualAllmoney != null">
+				virtual_allmoney =
+				#{virtualAllmoney,jdbcType=DECIMAL},
+			</if>
+			<if test="virtualDisposition != null">
+				virtual_disposition =
+				#{virtualDisposition,jdbcType=DECIMAL},
+			</if>
+			<if test="descrp != null">
+				descrp = #{descrp,jdbcType=VARCHAR},
+			</if>
+			<if test="exceptionStatus != null">
+				exception_status =
+				#{exceptionStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="masterGroupId != null">
+				master_group_id =
+				#{masterGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="hostIp != null">
+				host_ip = #{hostIp,jdbcType=VARCHAR},
+			</if>
+			<if test="hostPort != null">
+				host_port =
+				#{hostPort,jdbcType=VARCHAR},
+			</if>
+			<if test="hostMac != null">
+				host_mac = #{hostMac,jdbcType=VARCHAR},
+			</if>
+			<if test="authCode != null">
+				auth_code =
+				#{authCode,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				app_id = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="userProductInfo != null">
+				user_product_info =
+				#{userProductInfo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_master_temp
+		WHERE id = #{id}
+	</delete>
+
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_temp
+		where id = #{id}
+	</select>
+
+	<select id="findByMasterId" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_temp
+		where masterId=#{masterId}
+	</select>
+</mapper>

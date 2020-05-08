@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.ctphissettlefund.model.Ctphissettlefund">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.ctphissettlefund.model.Ctphissettlefund">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="pre_balance" property="preBalance"
+			jdbcType="DECIMAL" />
+		<result column="deposit_withdrawal"
+			property="depositWithdrawal" jdbcType="DECIMAL" />
+		<result column="end_balance" property="endBalance"
+			jdbcType="DECIMAL" />
+		<result column="balance" property="balance" jdbcType="DECIMAL" />
+		<result column="today_profit" property="todayProfit"
+			jdbcType="DECIMAL" />
+		<result column="realized" property="realized"
+			jdbcType="DECIMAL" />
+		<result column="commission" property="commission"
+			jdbcType="DECIMAL" />
+		<result column="margin_occupied" property="marginOccupied"
+			jdbcType="DECIMAL" />
+		<result column="exercise_fee" property="exerciseFee"
+			jdbcType="DECIMAL" />
+		<result column="delivery_margin" property="deliveryMargin"
+			jdbcType="DECIMAL" />
+		<result column="delivery_fee" property="deliveryFee"
+			jdbcType="DECIMAL" />
+		<result column="market_equity" property="marketEquity"
+			jdbcType="DECIMAL" />
+		<result column="fund_avail" property="fundAvail"
+			jdbcType="DECIMAL" />
+		<result column="net_worth" property="netWorth"
+			jdbcType="DECIMAL" />
+		<result column="parts" property="parts" jdbcType="DECIMAL" />
+		<result column="profit" property="profit" jdbcType="DECIMAL" />
+		<result column="profit_total" property="profitTotal"
+			jdbcType="DECIMAL" />
+		<result column="profit_rate" property="profitRate"
+			jdbcType="DECIMAL" />
+		<result column="profit_total_rate" property="profitTotalRate"
+			jdbcType="DECIMAL" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,master_id,his_date,create_time,pre_balance,deposit_withdrawal,balance,today_profit,commission,margin_occupied,delivery_margin,delivery_fee,market_equity,fund_avail,net_worth,parts,profit
+		,profit_total,profit_rate,profit_total_rate,capital_amount
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.ctphissettlefund.model.Ctphissettlefund"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_ctp_hissettle_fund(
+		id,master_id,his_date,create_time,pre_balance,deposit_withdrawal
+		,end_balance,balance,today_profit,realized,commission,margin_occupied
+		,exercise_fee,delivery_margin,delivery_fee,market_equity,fund_avail,net_worth
+		,parts,profit,profit_total,profit_rate,profit_total_rate,capital_amount
+		)
+		values (
+		#{id,jdbcType=INTEGER},#{masterId,jdbcType=INTEGER},#{hisDate,jdbcType=TIMESTAMP},#{createTime,jdbcType=TIMESTAMP},#{preBalance,jdbcType=DECIMAL}
+		,#{depositWithdrawal,jdbcType=DECIMAL},#{endBalance,jdbcType=DECIMAL},#{balance,jdbcType=DECIMAL},#{todayProfit,jdbcType=DECIMAL},#{realized,jdbcType=DECIMAL}
+		,#{commission,jdbcType=DECIMAL},#{marginOccupied,jdbcType=DECIMAL},#{exerciseFee,jdbcType=DECIMAL},#{deliveryMargin,jdbcType=DECIMAL},#{deliveryFee,jdbcType=DECIMAL}
+		,#{marketEquity,jdbcType=DECIMAL},#{fundAvail,jdbcType=DECIMAL},#{netWorth,jdbcType=DECIMAL},#{parts,jdbcType=DECIMAL},#{profit,jdbcType=DECIMAL}
+		,#{profitTotal,jdbcType=DECIMAL},#{profitRate,jdbcType=DECIMAL},#{profitTotalRate,jdbcType=DECIMAL},#{capitalAmount,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_ctp_hissettle_fund
+		(master_id,his_date,create_time,pre_balance,deposit_withdrawal
+		,end_balance,balance,today_profit,realized,commission,margin_occupied
+		,exercise_fee,delivery_margin,delivery_fee,market_equity,fund_avail,net_worth
+		,parts,profit,profit_total,profit_rate,profit_total_rate,capital_amount
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.masterId},
+			#{item.hisDate},
+			#{item.createTime},
+			#{item.preBalance},
+			#{item.depositWithdrawal},
+			#{item.endBalance},
+			#{item.balance},
+			#{item.todayProfit},
+			#{item.realized},
+			#{item.commission},
+			#{item.marginOccupied},
+			#{item.exerciseFee},
+			#{item.deliveryMargin},
+			#{item.deliveryFee},
+			#{item.marketEquity},
+			#{item.fundAvail},
+			#{item.netWorth},
+			#{item.parts},
+			#{item.profit},
+			#{item.profitTotal},
+			#{item.profitRate},
+			#{item.profitTotalRate},
+			#{item.capitalAmount})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.ctphissettlefund.model.Ctphissettlefund">
+		UPDATE t_ctp_hissettle_fund
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preBalance != null">
+				pre_balance =
+				#{preBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="depositWithdrawal != null">
+				deposit_withdrawal =
+				#{depositWithdrawal,jdbcType=DECIMAL},
+			</if>
+			<if test="endBalance != null">
+				end_balance =
+				#{endBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="balance != null">
+				balance = #{balance,jdbcType=DECIMAL},
+			</if>
+			<if test="todayProfit != null">
+				today_profit =
+				#{todayProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="realized != null">
+				realized =
+				#{realized,jdbcType=DECIMAL},
+			</if>
+			<if test="commission != null">
+				commission =
+				#{commission,jdbcType=DECIMAL},
+			</if>
+			<if test="marginOccupied != null">
+				margin_occupied =
+				#{marginOccupied,jdbcType=DECIMAL},
+			</if>
+			<if test="exerciseFee != null">
+				exercise_fee =
+				#{exerciseFee,jdbcType=DECIMAL},
+			</if>
+			<if test="deliveryMargin != null">
+				delivery_margin =
+				#{deliveryMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="deliveryFee != null">
+				delivery_fee =
+				#{deliveryFee,jdbcType=DECIMAL},
+			</if>
+			<if test="marketEquity != null">
+				market_equity =
+				#{marketEquity,jdbcType=DECIMAL},
+			</if>
+			<if test="fundAvail != null">
+				fund_avail =
+				#{fundAvail,jdbcType=DECIMAL},
+			</if>
+			<if test="netWorth != null">
+				net_worth =
+				#{netWorth,jdbcType=DECIMAL},
+			</if>
+			<if test="parts != null">
+				parts = #{parts,jdbcType=DECIMAL},
+			</if>
+			<if test="profit != null">
+				profit = #{profit,jdbcType=DECIMAL},
+			</if>
+			<if test="profitTotal != null">
+				profit_total =
+				#{profitTotal,jdbcType=DECIMAL},
+			</if>
+			<if test="profitRate != null">
+				profit_rate =
+				#{profitRate,jdbcType=DECIMAL},
+			</if>
+			<if test="profitTotalRate != null">
+				profit_total_rate =
+				#{profitTotalRate,jdbcType=DECIMAL},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_ctp_hissettle_fund WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_ctp_hissettle_fund
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_ctp_hissettle_fund
+	</select>
+</mapper>

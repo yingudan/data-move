@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.dealgoldmaster.model.Dealgoldmaster">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.dealgoldmaster.model.Dealgoldmaster">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="account_id" property="accountId"
+			jdbcType="INTEGER" />
+		<result column="deal_gold" property="deal_gold"
+			jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="money" property="money" jdbcType="DECIMAL" />
+		<result column="creare_time" property="creareTime"
+			jdbcType="TIMESTAMP" />
+		<result column="cash_deposit" property="cashDeposit"
+			jdbcType="DECIMAL" />
+		<result column="stock_num" property="stockNum"
+			jdbcType="INTEGER" />
+		<result column="stock_code" property="stockCode"
+			jdbcType="VARCHAR" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="total_assets" property="totalAssets"
+			jdbcType="DECIMAL" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="disposition_type" property="dispositionType"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,account_id,deal_gold,type,money,creare_time,cash_deposit,stock_num,stock_code,disposition,capital_amount,name,total_assets,remarks,disposition_type
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.dealgoldmaster.model.Dealgoldmaster"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_deal_gold_master(
+		id,account_id,deal_gold,type,money,creare_time
+		,cash_deposit,stock_num,stock_code,disposition,capital_amount,name
+		,total_assets,remarks,disposition_type)
+		values (
+		#{id,jdbcType=INTEGER},#{accountId,jdbcType=INTEGER},#{deal_gold,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{money,jdbcType=DECIMAL}
+		,#{creareTime,jdbcType=TIMESTAMP},#{cashDeposit,jdbcType=DECIMAL},#{stockNum,jdbcType=INTEGER},#{stockCode,jdbcType=VARCHAR},#{disposition,jdbcType=DECIMAL}
+		,#{capitalAmount,jdbcType=DECIMAL},#{name,jdbcType=VARCHAR},#{totalAssets,jdbcType=DECIMAL},#{remarks,jdbcType=VARCHAR},#{dispositionType,jdbcType=VARCHAR}
+
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_deal_gold_master
+		(account_id,deal_gold,type,money,creare_time
+		,cash_deposit,stock_num,stock_code,disposition,capital_amount,name
+		,total_assets,remarks,disposition_type) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.accountId},
+			#{item.deal_gold},
+			#{item.type},
+			#{item.money},
+			#{item.creareTime},
+			#{item.cashDeposit},
+			#{item.stockNum},
+			#{item.stockCode},
+			#{item.disposition},
+			#{item.capitalAmount},
+			#{item.name},
+			#{item.totalAssets},
+			#{item.remarks},
+			#{item.dispositionType})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.dealgoldmaster.model.Dealgoldmaster">
+		UPDATE t_deal_gold_master
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="accountId != null">
+				account_id =
+				#{accountId,jdbcType=INTEGER},
+			</if>
+			<if test="deal_gold != null">
+				deal_gold =
+				#{deal_gold,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="money != null">
+				money = #{money,jdbcType=DECIMAL},
+			</if>
+			<if test="creareTime != null">
+				creare_time =
+				#{creareTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cashDeposit != null">
+				cash_deposit =
+				#{cashDeposit,jdbcType=DECIMAL},
+			</if>
+			<if test="stockNum != null">
+				stock_num =
+				#{stockNum,jdbcType=INTEGER},
+			</if>
+			<if test="stockCode != null">
+				stock_code =
+				#{stockCode,jdbcType=VARCHAR},
+			</if>
+			<if test="disposition != null">
+				disposition =
+				#{disposition,jdbcType=DECIMAL},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="totalAssets != null">
+				total_assets =
+				#{totalAssets,jdbcType=DECIMAL},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="dispositionType != null">
+				disposition_type =
+				#{dispositionType,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_deal_gold_master
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_deal_gold_master
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_deal_gold_master
+	</select>
+</mapper>

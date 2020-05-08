@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ujuit.datamove.rmmonitor.model.Rmmonitor">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.rmmonitor.model.Rmmonitor">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="is_monitor" property="isMonitor"
+			jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,sub_account_id,is_monitor,type,create_time
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.rmmonitor.model.Rmmonitor"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_rm_monitor(
+		id,sub_account_id,is_monitor,type,create_time)
+		values (
+		#{id,jdbcType=INTEGER},#{subAccountId,jdbcType=INTEGER},#{isMonitor,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}
+
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_rm_monitor (sub_account_id,is_monitor,type,create_time)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.subAccountId},
+			#{item.isMonitor},
+			#{item.type},
+			#{item.createTime})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.rmmonitor.model.Rmmonitor">
+		UPDATE t_rm_monitor
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="isMonitor != null">
+				is_monitor =
+				#{isMonitor,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_rm_monitor WHERE
+		id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_rm_monitor
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_rm_monitor
+	</select>
+</mapper>

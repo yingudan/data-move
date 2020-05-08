@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.dailymasterassets.model.Dailymasterassets">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.dailymasterassets.model.Dailymasterassets">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="t_master_id" property="tMasterId"
+			jdbcType="INTEGER" />
+		<result column="total_assets" property="totalAssets"
+			jdbcType="DECIMAL" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="profit" property="profit" jdbcType="DECIMAL" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,t_master_id,total_assets,capital_amount,his_date,profit,disposition
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.dailymasterassets.model.Dailymasterassets"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		daily_master_assets(
+		id,t_master_id,total_assets,capital_amount,his_date,profit
+		,disposition)
+		values (
+		#{id,jdbcType=INTEGER},#{tMasterId,jdbcType=INTEGER},#{totalAssets,jdbcType=DECIMAL},#{capitalAmount,jdbcType=DECIMAL},#{hisDate,jdbcType=TIMESTAMP}
+		,#{profit,jdbcType=DECIMAL},#{disposition,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO daily_master_assets
+		(t_master_id,total_assets,capital_amount,his_date,profit
+		,disposition)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.tMasterId},
+			#{item.totalAssets},
+			#{item.capitalAmount},
+			#{item.hisDate},
+			#{item.profit},
+			#{item.disposition})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.dailymasterassets.model.Dailymasterassets">
+		UPDATE daily_master_assets
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="tMasterId != null">
+				t_master_id =
+				#{tMasterId,jdbcType=INTEGER},
+			</if>
+			<if test="totalAssets != null">
+				total_assets =
+				#{totalAssets,jdbcType=DECIMAL},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="profit != null">
+				profit = #{profit,jdbcType=DECIMAL},
+			</if>
+			<if test="disposition != null">
+				disposition =
+				#{disposition,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		daily_master_assets WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from daily_master_assets
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from daily_master_assets
+	</select>
+</mapper>

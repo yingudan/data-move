@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.orderfutures.model.Orderfutures">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.orderfutures.model.Orderfutures">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="entrust_time" property="entrustTime"
+			jdbcType="TIMESTAMP" />
+		<result column="entrust_price" property="entrustPrice"
+			jdbcType="DECIMAL" />
+		<result column="entrust_number" property="entrustNumber"
+			jdbcType="INTEGER" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="position_type" property="positionType"
+			jdbcType="VARCHAR" />
+		<result column="price_type" property="priceType"
+			jdbcType="VARCHAR" />
+		<result column="force_close_reason" property="forceCloseReason"
+			jdbcType="VARCHAR" />
+		<result column="hedge_flag_type" property="hedgeFlagType"
+			jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="status_desc" property="statusDesc"
+			jdbcType="VARCHAR" />
+		<result column="cancel_number" property="cancelNumber"
+			jdbcType="INTEGER" />
+		<result column="total_deal_number" property="totalDealNumber"
+			jdbcType="INTEGER" />
+		<result column="total_deal_amount" property="totalDealAmount"
+			jdbcType="DECIMAL" />
+		<result column="client_tab" property="clientTab"
+			jdbcType="VARCHAR" />
+		<result column="cancel_type" property="cancelType"
+			jdbcType="VARCHAR" />
+		<result column="cancel_time" property="cancelTime"
+			jdbcType="TIMESTAMP" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="close_position_profit"
+			property="closePositionProfit" jdbcType="DECIMAL" />
+		<result column="frozen_collateral" property="frozenCollateral"
+			jdbcType="DECIMAL" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="frozen_cost" property="frozenCost"
+			jdbcType="DECIMAL" />
+		<result column="exchange_id" property="exchangeId"
+			jdbcType="VARCHAR" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="order_source_type" property="orderSourceType"
+			jdbcType="VARCHAR" />
+		<result column="order_source_type_info"
+			property="orderSourceTypeInfo" jdbcType="VARCHAR" />
+		<result column="close_position_flag"
+			property="closePositionFlag" jdbcType="VARCHAR" />
+		<result column="surplus_close_number"
+			property="surplusCloseNumber" jdbcType="INTEGER" />
+		<result column="close_number" property="closeNumber"
+			jdbcType="INTEGER" />
+		<result column="source_type" property="sourceType"
+			jdbcType="INTEGER" />
+		<result column="source_id" property="sourceId"
+			jdbcType="INTEGER" />
+		<result column="cond_remark" property="condRemark"
+			jdbcType="VARCHAR" />
+		<result column="order_ref" property="orderRef"
+			jdbcType="INTEGER" />
+		<result column="report_fee" property="reportFee"
+			jdbcType="DECIMAL" />
+		<result column="order_sys_id" property="orderSysId"
+			jdbcType="VARCHAR" />
+		<result column="last_deal_time" property="lastDealTime"
+			jdbcType="TIMESTAMP" />
+		<result column="today_close_position_profit"
+			property="todayClosePositionProfit" jdbcType="DECIMAL" />
+		<result column="uuid" property="uuid" jdbcType="VARCHAR" />
+		<result column="exchange" property="exchange"
+			jdbcType="VARCHAR" />
+		<result column="contract_no" property="contractNo"
+			jdbcType="VARCHAR" />
+		<result column="deal_no" property="dealNo" jdbcType="VARCHAR" />
+		<result column="front_id" property="frontId" jdbcType="INTEGER" />
+		<result column="session_id" property="sessionId"
+			jdbcType="INTEGER" />
+		<result column="last_settlement_price"
+			property="lastSettlementPrice" jdbcType="DECIMAL" />
+		<result column="masterId" property="masterid"
+			jdbcType="INTEGER" />
+	</resultMap>
+
+	<resultMap id="BaseResultMapV2"
+		type="com.ujuit.datamove.orderfutures.model.Orderfutures">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="entrust_time" property="entrustTime"
+			jdbcType="TIMESTAMP" />
+		<result column="entrust_price" property="entrustPrice"
+			jdbcType="DECIMAL" />
+		<result column="entrust_number" property="entrustNumber"
+			jdbcType="INTEGER" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="position_type" property="positionType"
+			jdbcType="VARCHAR" />
+		<result column="price_type" property="priceType"
+			jdbcType="VARCHAR" />
+		<result column="force_close_reason" property="forceCloseReason"
+			jdbcType="VARCHAR" />
+		<result column="hedge_flag_type" property="hedgeFlagType"
+			jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="status_desc" property="statusDesc"
+			jdbcType="VARCHAR" />
+		<result column="cancel_number" property="cancelNumber"
+			jdbcType="INTEGER" />
+		<result column="total_deal_number" property="totalDealNumber"
+			jdbcType="INTEGER" />
+		<result column="total_deal_amount" property="totalDealAmount"
+			jdbcType="DECIMAL" />
+		<result column="client_tab" property="clientTab"
+			jdbcType="VARCHAR" />
+		<result column="cancel_type" property="cancelType"
+			jdbcType="VARCHAR" />
+		<result column="cancel_time" property="cancelTime"
+			jdbcType="TIMESTAMP" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="close_position_profit"
+			property="closePositionProfit" jdbcType="DECIMAL" />
+		<result column="frozen_collateral" property="frozenCollateral"
+			jdbcType="DECIMAL" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="frozen_cost" property="frozenCost"
+			jdbcType="DECIMAL" />
+		<result column="exchange_id" property="exchangeId"
+			jdbcType="VARCHAR" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="order_source_type" property="orderSourceType"
+			jdbcType="VARCHAR" />
+		<result column="order_source_type_info"
+			property="orderSourceTypeInfo" jdbcType="VARCHAR" />
+		<result column="close_position_flag"
+			property="closePositionFlag" jdbcType="VARCHAR" />
+		<result column="surplus_close_number"
+			property="surplusCloseNumber" jdbcType="INTEGER" />
+		<result column="close_number" property="closeNumber"
+			jdbcType="INTEGER" />
+		<result column="source_type" property="sourceType"
+			jdbcType="INTEGER" />
+		<result column="source_id" property="sourceId"
+			jdbcType="INTEGER" />
+		<result column="cond_remark" property="condRemark"
+			jdbcType="VARCHAR" />
+		<result column="order_ref" property="orderRef"
+			jdbcType="INTEGER" />
+		<result column="report_fee" property="reportFee"
+			jdbcType="DECIMAL" />
+		<result column="order_sys_id" property="orderSysId"
+			jdbcType="VARCHAR" />
+		<result column="last_deal_time" property="lastDealTime"
+			jdbcType="TIMESTAMP" />
+		<result column="today_close_position_profit"
+			property="todayClosePositionProfit" jdbcType="DECIMAL" />
+		<result column="uuid" property="uuid" jdbcType="VARCHAR" />
+		<result column="exchange" property="exchange"
+			jdbcType="VARCHAR" />
+		<result column="contract_no" property="contractNo"
+			jdbcType="VARCHAR" />
+		<result column="deal_no" property="dealNo" jdbcType="VARCHAR" />
+		<result column="front_id" property="frontId" jdbcType="INTEGER" />
+		<result column="session_id" property="sessionId"
+			jdbcType="INTEGER" />
+		<result column="last_settlement_price"
+			property="lastSettlementPrice" jdbcType="DECIMAL" />
+		<result column="masterId" property="masterid"
+			jdbcType="INTEGER" />
+		<result column="new_id" property="newId" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,name,code,sub_account_id,entrust_time,entrust_price,entrust_number,direction,position_type,price_type,force_close_reason,hedge_flag_type,status,status_desc,cancel_number,total_deal_number,total_deal_amount,client_tab,cancel_type,cancel_time
+		,cost,remarks,close_position_profit,frozen_collateral,create_time,update_time,frozen_cost,exchange_id,collateral,order_source_type,order_source_type_info,close_position_flag,surplus_close_number,close_number,source_type,source_id,cond_remark,order_ref,report_fee,order_sys_id
+		,last_deal_time,today_close_position_profit,uuid,exchange,contract_no,deal_no,front_id,session_id,last_settlement_price,masterId
+	</sql>
+
+	<sql id="Base_Column_List_V2">
+		id,name,code,sub_account_id,entrust_time,entrust_price,entrust_number,direction,position_type,price_type,force_close_reason,hedge_flag_type,status,status_desc,cancel_number,total_deal_number,total_deal_amount,client_tab,cancel_type,cancel_time
+		,cost,remarks,close_position_profit,frozen_collateral,create_time,update_time,frozen_cost,exchange_id,collateral,order_source_type,order_source_type_info,close_position_flag,surplus_close_number,close_number,source_type,source_id,cond_remark,order_ref,report_fee,order_sys_id
+		,last_deal_time,today_close_position_profit,uuid,exchange,contract_no,deal_no,front_id,session_id,last_settlement_price,masterId,new_id
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.orderfutures.model.Orderfutures"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_order_futures(
+		name,code,sub_account_id,entrust_time,entrust_price
+		,entrust_number,direction,position_type,price_type,force_close_reason,hedge_flag_type
+		,status,status_desc,cancel_number,total_deal_number,total_deal_amount,client_tab
+		,cancel_type,cancel_time,cost,remarks,close_position_profit,frozen_collateral
+		,create_time,update_time,frozen_cost,exchange_id,collateral,order_source_type
+		,order_source_type_info,close_position_flag,surplus_close_number,close_number,source_type,source_id
+		,cond_remark,order_ref,report_fee,order_sys_id,last_deal_time,today_close_position_profit
+		,uuid,exchange,contract_no,deal_no,front_id,session_id
+		,last_settlement_price,masterId)
+		values (
+		#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{subAccountId,jdbcType=INTEGER},#{entrustTime,jdbcType=TIMESTAMP}
+		,#{entrustPrice,jdbcType=DECIMAL},#{entrustNumber,jdbcType=INTEGER},#{direction,jdbcType=VARCHAR},#{positionType,jdbcType=VARCHAR},#{priceType,jdbcType=VARCHAR}
+		,#{forceCloseReason,jdbcType=VARCHAR},#{hedgeFlagType,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{statusDesc,jdbcType=VARCHAR},#{cancelNumber,jdbcType=INTEGER}
+		,#{totalDealNumber,jdbcType=INTEGER},#{totalDealAmount,jdbcType=DECIMAL},#{clientTab,jdbcType=VARCHAR},#{cancelType,jdbcType=VARCHAR},#{cancelTime,jdbcType=TIMESTAMP}
+		,#{cost,jdbcType=DECIMAL},#{remarks,jdbcType=VARCHAR},#{closePositionProfit,jdbcType=DECIMAL},#{frozenCollateral,jdbcType=DECIMAL},#{createTime,jdbcType=TIMESTAMP}
+		,#{updateTime,jdbcType=TIMESTAMP},#{frozenCost,jdbcType=DECIMAL},#{exchangeId,jdbcType=VARCHAR},#{collateral,jdbcType=DECIMAL},#{orderSourceType,jdbcType=VARCHAR}
+		,#{orderSourceTypeInfo,jdbcType=VARCHAR},#{closePositionFlag,jdbcType=VARCHAR},#{surplusCloseNumber,jdbcType=INTEGER},#{closeNumber,jdbcType=INTEGER},#{sourceType,jdbcType=INTEGER}
+		,#{sourceId,jdbcType=INTEGER},#{condRemark,jdbcType=VARCHAR},#{orderRef,jdbcType=INTEGER},#{reportFee,jdbcType=DECIMAL},#{orderSysId,jdbcType=VARCHAR}
+		,#{lastDealTime,jdbcType=TIMESTAMP},#{todayClosePositionProfit,jdbcType=DECIMAL},#{uuid,jdbcType=VARCHAR},#{exchange,jdbcType=VARCHAR},#{contractNo,jdbcType=VARCHAR}
+		,#{dealNo,jdbcType=VARCHAR},#{frontId,jdbcType=INTEGER},#{sessionId,jdbcType=INTEGER},#{lastSettlementPrice,jdbcType=DECIMAL},#{masterid,jdbcType=INTEGER}
+
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_order_futures
+		(name,code,sub_account_id,entrust_time,entrust_price
+		,entrust_number,direction,position_type,price_type,force_close_reason,hedge_flag_type
+		,status,status_desc,cancel_number,total_deal_number,total_deal_amount,client_tab
+		,cancel_type,cancel_time,cost,remarks,close_position_profit,frozen_collateral
+		,create_time,update_time,frozen_cost,exchange_id,collateral,order_source_type
+		,order_source_type_info,close_position_flag,surplus_close_number,close_number,source_type,source_id
+		,cond_remark,order_ref,report_fee,order_sys_id,last_deal_time,today_close_position_profit
+		,uuid,exchange,contract_no,deal_no,front_id,session_id
+		,last_settlement_price,masterId) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.name},
+			#{item.code},
+			#{item.subAccountId},
+			#{item.entrustTime},
+			#{item.entrustPrice},
+			#{item.entrustNumber},
+			#{item.direction},
+			#{item.positionType},
+			#{item.priceType},
+			#{item.forceCloseReason},
+			#{item.hedgeFlagType},
+			#{item.status},
+			#{item.statusDesc},
+			#{item.cancelNumber},
+			#{item.totalDealNumber},
+			#{item.totalDealAmount},
+			#{item.clientTab},
+			#{item.cancelType},
+			#{item.cancelTime},
+			#{item.cost},
+			#{item.remarks},
+			#{item.closePositionProfit},
+			#{item.frozenCollateral},
+			#{item.createTime},
+			#{item.updateTime},
+			#{item.frozenCost},
+			#{item.exchangeId},
+			#{item.collateral},
+			#{item.orderSourceType},
+			#{item.orderSourceTypeInfo},
+			#{item.closePositionFlag},
+			#{item.surplusCloseNumber},
+			#{item.closeNumber},
+			#{item.sourceType},
+			#{item.sourceId},
+			#{item.condRemark},
+			#{item.orderRef},
+			#{item.reportFee},
+			#{item.orderSysId},
+			#{item.lastDealTime},
+			#{item.todayClosePositionProfit},
+			#{item.uuid},
+			#{item.exchange},
+			#{item.contractNo},
+			#{item.dealNo},
+			#{item.frontId},
+			#{item.sessionId},
+			#{item.lastSettlementPrice},
+			#{item.masterid})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.orderfutures.model.Orderfutures">
+		UPDATE t_order_futures
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="entrustTime != null">
+				entrust_time =
+				#{entrustTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="entrustPrice != null">
+				entrust_price =
+				#{entrustPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="entrustNumber != null">
+				entrust_number =
+				#{entrustNumber,jdbcType=INTEGER},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="positionType != null">
+				position_type =
+				#{positionType,jdbcType=VARCHAR},
+			</if>
+			<if test="priceType != null">
+				price_type =
+				#{priceType,jdbcType=VARCHAR},
+			</if>
+			<if test="forceCloseReason != null">
+				force_close_reason =
+				#{forceCloseReason,jdbcType=VARCHAR},
+			</if>
+			<if test="hedgeFlagType != null">
+				hedge_flag_type =
+				#{hedgeFlagType,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="statusDesc != null">
+				status_desc =
+				#{statusDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelNumber != null">
+				cancel_number =
+				#{cancelNumber,jdbcType=INTEGER},
+			</if>
+			<if test="totalDealNumber != null">
+				total_deal_number =
+				#{totalDealNumber,jdbcType=INTEGER},
+			</if>
+			<if test="totalDealAmount != null">
+				total_deal_amount =
+				#{totalDealAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="clientTab != null">
+				client_tab =
+				#{clientTab,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelType != null">
+				cancel_type =
+				#{cancelType,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelTime != null">
+				cancel_time =
+				#{cancelTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cost != null">
+				cost = #{cost,jdbcType=DECIMAL},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="closePositionProfit != null">
+				close_position_profit =
+				#{closePositionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenCollateral != null">
+				frozen_collateral =
+				#{frozenCollateral,jdbcType=DECIMAL},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time =
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="frozenCost != null">
+				frozen_cost =
+				#{frozenCost,jdbcType=DECIMAL},
+			</if>
+			<if test="exchangeId != null">
+				exchange_id =
+				#{exchangeId,jdbcType=VARCHAR},
+			</if>
+			<if test="collateral != null">
+				collateral =
+				#{collateral,jdbcType=DECIMAL},
+			</if>
+			<if test="orderSourceType != null">
+				order_source_type =
+				#{orderSourceType,jdbcType=VARCHAR},
+			</if>
+			<if test="orderSourceTypeInfo != null">
+				order_source_type_info =
+				#{orderSourceTypeInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="closePositionFlag != null">
+				close_position_flag =
+				#{closePositionFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="surplusCloseNumber != null">
+				surplus_close_number =
+				#{surplusCloseNumber,jdbcType=INTEGER},
+			</if>
+			<if test="closeNumber != null">
+				close_number =
+				#{closeNumber,jdbcType=INTEGER},
+			</if>
+			<if test="sourceType != null">
+				source_type =
+				#{sourceType,jdbcType=INTEGER},
+			</if>
+			<if test="sourceId != null">
+				source_id =
+				#{sourceId,jdbcType=INTEGER},
+			</if>
+			<if test="condRemark != null">
+				cond_remark =
+				#{condRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderRef != null">
+				order_ref =
+				#{orderRef,jdbcType=INTEGER},
+			</if>
+			<if test="reportFee != null">
+				report_fee =
+				#{reportFee,jdbcType=DECIMAL},
+			</if>
+			<if test="orderSysId != null">
+				order_sys_id =
+				#{orderSysId,jdbcType=VARCHAR},
+			</if>
+			<if test="lastDealTime != null">
+				last_deal_time =
+				#{lastDealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="todayClosePositionProfit != null">
+				today_close_position_profit =
+				#{todayClosePositionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="uuid != null">
+				uuid = #{uuid,jdbcType=VARCHAR},
+			</if>
+			<if test="exchange != null">
+				exchange =
+				#{exchange,jdbcType=VARCHAR},
+			</if>
+			<if test="contractNo != null">
+				contract_no =
+				#{contractNo,jdbcType=VARCHAR},
+			</if>
+			<if test="dealNo != null">
+				deal_no = #{dealNo,jdbcType=VARCHAR},
+			</if>
+			<if test="frontId != null">
+				front_id = #{frontId,jdbcType=INTEGER},
+			</if>
+			<if test="sessionId != null">
+				session_id =
+				#{sessionId,jdbcType=INTEGER},
+			</if>
+			<if test="lastSettlementPrice != null">
+				last_settlement_price =
+				#{lastSettlementPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="masterid != null">
+				masterId =
+				#{masterid,jdbcType=INTEGER},
+			</if>
+			<if test="newId!=null">
+				new_id=#{newId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_order_futures
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_order_futures
+		where id = #{id}
+	</select>
+
+	<select id="queryAllNeedAddOrderfutures"
+		resultMap="BaseResultMapV2">
+		select
+		<include refid="Base_Column_List_V2" />
+		from t_order_futures
+		where order_sys_id IS NOT NULL
+	</select>
+</mapper>

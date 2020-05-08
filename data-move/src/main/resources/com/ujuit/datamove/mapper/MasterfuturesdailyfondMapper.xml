@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.masterfuturesdailyfond.model.Masterfuturesdailyfond">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.masterfuturesdailyfond.model.Masterfuturesdailyfond">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="pre_mortgage" property="preMortgage"
+			jdbcType="DECIMAL" />
+		<result column="pre_credit" property="preCredit"
+			jdbcType="DECIMAL" />
+		<result column="pre_deposit" property="preDeposit"
+			jdbcType="DECIMAL" />
+		<result column="pre_balance" property="preBalance"
+			jdbcType="DECIMAL" />
+		<result column="pre_margin" property="preMargin"
+			jdbcType="DECIMAL" />
+		<result column="interest_base" property="interestBase"
+			jdbcType="DECIMAL" />
+		<result column="interest" property="interest"
+			jdbcType="DECIMAL" />
+		<result column="deposit" property="deposit" jdbcType="DECIMAL" />
+		<result column="withdraw" property="withdraw"
+			jdbcType="DECIMAL" />
+		<result column="frozen_margin" property="frozenMargin"
+			jdbcType="DECIMAL" />
+		<result column="frozen_cash" property="frozenCash"
+			jdbcType="DECIMAL" />
+		<result column="frozen_commission" property="frozenCommission"
+			jdbcType="DECIMAL" />
+		<result column="curr_margin" property="currMargin"
+			jdbcType="DECIMAL" />
+		<result column="cash_in" property="cashIn" jdbcType="DECIMAL" />
+		<result column="commission" property="commission"
+			jdbcType="DECIMAL" />
+		<result column="close_profit" property="closeProfit"
+			jdbcType="DECIMAL" />
+		<result column="position_profit" property="positionProfit"
+			jdbcType="DECIMAL" />
+		<result column="balance" property="balance" jdbcType="DECIMAL" />
+		<result column="available" property="available"
+			jdbcType="DECIMAL" />
+		<result column="withdraw_quota" property="withdrawQuota"
+			jdbcType="DECIMAL" />
+		<result column="reserve" property="reserve" jdbcType="DECIMAL" />
+		<result column="trading_day" property="tradingDay"
+			jdbcType="VARCHAR" />
+		<result column="settlement_id" property="settlementId"
+			jdbcType="INTEGER" />
+		<result column="credit" property="credit" jdbcType="DECIMAL" />
+		<result column="mortgage" property="mortgage"
+			jdbcType="DECIMAL" />
+		<result column="exchange_margin" property="exchangeMargin"
+			jdbcType="DECIMAL" />
+		<result column="delivery_margin" property="deliveryMargin"
+			jdbcType="DECIMAL" />
+		<result column="exchange_delivery_margin"
+			property="exchangeDeliveryMargin" jdbcType="DECIMAL" />
+		<result column="reserve_balance" property="reserveBalance"
+			jdbcType="DECIMAL" />
+		<result column="currency_id" property="currencyId"
+			jdbcType="VARCHAR" />
+		<result column="pre_fund_mortgage_in"
+			property="preFundMortgageIn" jdbcType="DECIMAL" />
+		<result column="pre_fund_mortgage_out"
+			property="preFundMortgageOut" jdbcType="DECIMAL" />
+		<result column="fund_mortgage_in" property="fundMortgageIn"
+			jdbcType="DECIMAL" />
+		<result column="fund_mortgage_out" property="fundMortgageOut"
+			jdbcType="DECIMAL" />
+		<result column="fund_mortgage_available"
+			property="fundMortgageAvailable" jdbcType="DECIMAL" />
+		<result column="mortgageable_fund" property="mortgageableFund"
+			jdbcType="DECIMAL" />
+		<result column="spec_product_margin"
+			property="specProductMargin" jdbcType="DECIMAL" />
+		<result column="spec_product_frozen_margin"
+			property="specProductFrozenMargin" jdbcType="DECIMAL" />
+		<result column="spec_product_commission"
+			property="specProductCommission" jdbcType="DECIMAL" />
+		<result column="spec_product_frozen_commission"
+			property="specProductFrozenCommission" jdbcType="DECIMAL" />
+		<result column="spec_product_position_profit"
+			property="specProductPositionProfit" jdbcType="DECIMAL" />
+		<result column="spec_product_close_profit"
+			property="specProductCloseProfit" jdbcType="DECIMAL" />
+		<result column="spec_product_position_profit_by_alg"
+			property="specProductPositionProfitByAlg" jdbcType="DECIMAL" />
+		<result column="spec_product_exchange_margin"
+			property="specProductExchangeMargin" jdbcType="DECIMAL" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="init_equity" property="initEquity"
+			jdbcType="DECIMAL" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="settlement_type" property="settlementType"
+			jdbcType="BIT" />
+		<result column="deposit_withdrawal"
+			property="depositWithdrawal" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,master_id,pre_mortgage,pre_credit,pre_deposit,pre_balance,pre_margin,interest_base,interest,deposit,withdraw,frozen_margin,frozen_cash,frozen_commission,curr_margin,cash_in,commission,close_profit,position_profit,balance
+		,available,withdraw_quota,reserve,trading_day,settlement_id,credit,mortgage,exchange_margin,delivery_margin,exchange_delivery_margin,reserve_balance,currency_id,pre_fund_mortgage_in,pre_fund_mortgage_out,fund_mortgage_in,fund_mortgage_out,fund_mortgage_available,mortgageable_fund
+		,his_date,init_equity,capital_amount,settlement_type,deposit_withdrawal
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.masterfuturesdailyfond.model.Masterfuturesdailyfond"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_master_futures_daily_fond(
+		id,master_id,pre_mortgage,pre_credit,pre_deposit,pre_balance
+		,pre_margin,interest_base,interest,deposit,withdraw,frozen_margin
+		,frozen_cash,frozen_commission,curr_margin,cash_in,commission,close_profit
+		,position_profit,balance,available,withdraw_quota,reserve,trading_day
+		,settlement_id,credit,mortgage,exchange_margin,delivery_margin,exchange_delivery_margin
+		,reserve_balance,currency_id,pre_fund_mortgage_in,pre_fund_mortgage_out,fund_mortgage_in,fund_mortgage_out
+		,fund_mortgage_available,mortgageable_fund,spec_product_margin,spec_product_frozen_margin,spec_product_commission,spec_product_frozen_commission
+		,spec_product_position_profit,spec_product_close_profit,spec_product_position_profit_by_alg,spec_product_exchange_margin,his_date,init_equity
+		,capital_amount,settlement_type,deposit_withdrawal)
+		values (
+		#{id,jdbcType=INTEGER},#{masterId,jdbcType=INTEGER},#{preMortgage,jdbcType=DECIMAL},#{preCredit,jdbcType=DECIMAL},#{preDeposit,jdbcType=DECIMAL}
+		,#{preBalance,jdbcType=DECIMAL},#{preMargin,jdbcType=DECIMAL},#{interestBase,jdbcType=DECIMAL},#{interest,jdbcType=DECIMAL},#{deposit,jdbcType=DECIMAL}
+		,#{withdraw,jdbcType=DECIMAL},#{frozenMargin,jdbcType=DECIMAL},#{frozenCash,jdbcType=DECIMAL},#{frozenCommission,jdbcType=DECIMAL},#{currMargin,jdbcType=DECIMAL}
+		,#{cashIn,jdbcType=DECIMAL},#{commission,jdbcType=DECIMAL},#{closeProfit,jdbcType=DECIMAL},#{positionProfit,jdbcType=DECIMAL},#{balance,jdbcType=DECIMAL}
+		,#{available,jdbcType=DECIMAL},#{withdrawQuota,jdbcType=DECIMAL},#{reserve,jdbcType=DECIMAL},#{tradingDay,jdbcType=VARCHAR},#{settlementId,jdbcType=INTEGER}
+		,#{credit,jdbcType=DECIMAL},#{mortgage,jdbcType=DECIMAL},#{exchangeMargin,jdbcType=DECIMAL},#{deliveryMargin,jdbcType=DECIMAL},#{exchangeDeliveryMargin,jdbcType=DECIMAL}
+		,#{reserveBalance,jdbcType=DECIMAL},#{currencyId,jdbcType=VARCHAR},#{preFundMortgageIn,jdbcType=DECIMAL},#{preFundMortgageOut,jdbcType=DECIMAL},#{fundMortgageIn,jdbcType=DECIMAL}
+		,#{fundMortgageOut,jdbcType=DECIMAL},#{fundMortgageAvailable,jdbcType=DECIMAL},#{mortgageableFund,jdbcType=DECIMAL},#{specProductMargin,jdbcType=DECIMAL},#{specProductFrozenMargin,jdbcType=DECIMAL}
+		,#{specProductCommission,jdbcType=DECIMAL},#{specProductFrozenCommission,jdbcType=DECIMAL},#{specProductPositionProfit,jdbcType=DECIMAL},#{specProductCloseProfit,jdbcType=DECIMAL},#{specProductPositionProfitByAlg,jdbcType=DECIMAL}
+		,#{specProductExchangeMargin,jdbcType=DECIMAL},#{hisDate,jdbcType=TIMESTAMP},#{initEquity,jdbcType=DECIMAL},#{capitalAmount,jdbcType=DECIMAL},#{settlementType,jdbcType=BIT}
+		,#{depositWithdrawal,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_master_futures_daily_fond
+		(master_id,pre_mortgage,pre_credit,pre_deposit,pre_balance
+		,pre_margin,interest_base,interest,deposit,withdraw,frozen_margin
+		,frozen_cash,frozen_commission,curr_margin,cash_in,commission,close_profit
+		,position_profit,balance,available,withdraw_quota,reserve,trading_day
+		,settlement_id,credit,mortgage,exchange_margin,delivery_margin,exchange_delivery_margin
+		,reserve_balance,currency_id,pre_fund_mortgage_in,pre_fund_mortgage_out,fund_mortgage_in,fund_mortgage_out
+		,fund_mortgage_available,mortgageable_fund,spec_product_margin,spec_product_frozen_margin,spec_product_commission,spec_product_frozen_commission
+		,spec_product_position_profit,spec_product_close_profit,spec_product_position_profit_by_alg,spec_product_exchange_margin,his_date,init_equity
+		,capital_amount,settlement_type,deposit_withdrawal) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.masterId},
+			#{item.preMortgage},
+			#{item.preCredit},
+			#{item.preDeposit},
+			#{item.preBalance},
+			#{item.preMargin},
+			#{item.interestBase},
+			#{item.interest},
+			#{item.deposit},
+			#{item.withdraw},
+			#{item.frozenMargin},
+			#{item.frozenCash},
+			#{item.frozenCommission},
+			#{item.currMargin},
+			#{item.cashIn},
+			#{item.commission},
+			#{item.closeProfit},
+			#{item.positionProfit},
+			#{item.balance},
+			#{item.available},
+			#{item.withdrawQuota},
+			#{item.reserve},
+			#{item.tradingDay},
+			#{item.settlementId},
+			#{item.credit},
+			#{item.mortgage},
+			#{item.exchangeMargin},
+			#{item.deliveryMargin},
+			#{item.exchangeDeliveryMargin},
+			#{item.reserveBalance},
+			#{item.currencyId},
+			#{item.preFundMortgageIn},
+			#{item.preFundMortgageOut},
+			#{item.fundMortgageIn},
+			#{item.fundMortgageOut},
+			#{item.fundMortgageAvailable},
+			#{item.mortgageableFund},
+			#{item.specProductMargin},
+			#{item.specProductFrozenMargin},
+			#{item.specProductCommission},
+			#{item.specProductFrozenCommission},
+			#{item.specProductPositionProfit},
+			#{item.specProductCloseProfit},
+			#{item.specProductPositionProfitByAlg},
+			#{item.specProductExchangeMargin},
+			#{item.hisDate},
+			#{item.initEquity},
+			#{item.capitalAmount},
+			#{item.settlementType},
+			#{item.depositWithdrawal})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.masterfuturesdailyfond.model.Masterfuturesdailyfond">
+		UPDATE t_master_futures_daily_fond
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="preMortgage != null">
+				pre_mortgage =
+				#{preMortgage,jdbcType=DECIMAL},
+			</if>
+			<if test="preCredit != null">
+				pre_credit =
+				#{preCredit,jdbcType=DECIMAL},
+			</if>
+			<if test="preDeposit != null">
+				pre_deposit =
+				#{preDeposit,jdbcType=DECIMAL},
+			</if>
+			<if test="preBalance != null">
+				pre_balance =
+				#{preBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="preMargin != null">
+				pre_margin =
+				#{preMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="interestBase != null">
+				interest_base =
+				#{interestBase,jdbcType=DECIMAL},
+			</if>
+			<if test="interest != null">
+				interest =
+				#{interest,jdbcType=DECIMAL},
+			</if>
+			<if test="deposit != null">
+				deposit = #{deposit,jdbcType=DECIMAL},
+			</if>
+			<if test="withdraw != null">
+				withdraw =
+				#{withdraw,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenMargin != null">
+				frozen_margin =
+				#{frozenMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenCash != null">
+				frozen_cash =
+				#{frozenCash,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenCommission != null">
+				frozen_commission =
+				#{frozenCommission,jdbcType=DECIMAL},
+			</if>
+			<if test="currMargin != null">
+				curr_margin =
+				#{currMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="cashIn != null">
+				cash_in = #{cashIn,jdbcType=DECIMAL},
+			</if>
+			<if test="commission != null">
+				commission =
+				#{commission,jdbcType=DECIMAL},
+			</if>
+			<if test="closeProfit != null">
+				close_profit =
+				#{closeProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="positionProfit != null">
+				position_profit =
+				#{positionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="balance != null">
+				balance = #{balance,jdbcType=DECIMAL},
+			</if>
+			<if test="available != null">
+				available =
+				#{available,jdbcType=DECIMAL},
+			</if>
+			<if test="withdrawQuota != null">
+				withdraw_quota =
+				#{withdrawQuota,jdbcType=DECIMAL},
+			</if>
+			<if test="reserve != null">
+				reserve = #{reserve,jdbcType=DECIMAL},
+			</if>
+			<if test="tradingDay != null">
+				trading_day =
+				#{tradingDay,jdbcType=VARCHAR},
+			</if>
+			<if test="settlementId != null">
+				settlement_id =
+				#{settlementId,jdbcType=INTEGER},
+			</if>
+			<if test="credit != null">
+				credit = #{credit,jdbcType=DECIMAL},
+			</if>
+			<if test="mortgage != null">
+				mortgage =
+				#{mortgage,jdbcType=DECIMAL},
+			</if>
+			<if test="exchangeMargin != null">
+				exchange_margin =
+				#{exchangeMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="deliveryMargin != null">
+				delivery_margin =
+				#{deliveryMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="exchangeDeliveryMargin != null">
+				exchange_delivery_margin =
+				#{exchangeDeliveryMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="reserveBalance != null">
+				reserve_balance =
+				#{reserveBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="currencyId != null">
+				currency_id =
+				#{currencyId,jdbcType=VARCHAR},
+			</if>
+			<if test="preFundMortgageIn != null">
+				pre_fund_mortgage_in =
+				#{preFundMortgageIn,jdbcType=DECIMAL},
+			</if>
+			<if test="preFundMortgageOut != null">
+				pre_fund_mortgage_out =
+				#{preFundMortgageOut,jdbcType=DECIMAL},
+			</if>
+			<if test="fundMortgageIn != null">
+				fund_mortgage_in =
+				#{fundMortgageIn,jdbcType=DECIMAL},
+			</if>
+			<if test="fundMortgageOut != null">
+				fund_mortgage_out =
+				#{fundMortgageOut,jdbcType=DECIMAL},
+			</if>
+			<if test="fundMortgageAvailable != null">
+				fund_mortgage_available =
+				#{fundMortgageAvailable,jdbcType=DECIMAL},
+			</if>
+			<if test="mortgageableFund != null">
+				mortgageable_fund =
+				#{mortgageableFund,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductMargin != null">
+				spec_product_margin =
+				#{specProductMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductFrozenMargin != null">
+				spec_product_frozen_margin =
+				#{specProductFrozenMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductCommission != null">
+				spec_product_commission =
+				#{specProductCommission,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductFrozenCommission != null">
+				spec_product_frozen_commission =
+				#{specProductFrozenCommission,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductPositionProfit != null">
+				spec_product_position_profit =
+				#{specProductPositionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductCloseProfit != null">
+				spec_product_close_profit =
+				#{specProductCloseProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductPositionProfitByAlg != null">
+				spec_product_position_profit_by_alg =
+				#{specProductPositionProfitByAlg,jdbcType=DECIMAL},
+			</if>
+			<if test="specProductExchangeMargin != null">
+				spec_product_exchange_margin =
+				#{specProductExchangeMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="initEquity != null">
+				init_equity =
+				#{initEquity,jdbcType=DECIMAL},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="settlementType != null">
+				settlement_type =
+				#{settlementType,jdbcType=BIT},
+			</if>
+			<if test="depositWithdrawal != null">
+				deposit_withdrawal =
+				#{depositWithdrawal,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_master_futures_daily_fond WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_fond
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_fond
+	</select>
+</mapper>

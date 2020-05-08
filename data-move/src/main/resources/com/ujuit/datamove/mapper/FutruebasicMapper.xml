@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.futruebasic.model.Futruebasic">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.futruebasic.model.Futruebasic">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="trade_date" property="tradeDate"
+			jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="master_type" property="masterType"
+			jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,content,type,master_id,trade_date,update_time,status,master_type
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.futruebasic.model.Futruebasic"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_futrue_basic(
+		content,type,master_id,trade_date,update_time
+		,status,master_type)
+		values (
+		#{content,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{masterId,jdbcType=INTEGER},#{tradeDate,jdbcType=TIMESTAMP}
+		,#{updateTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER},#{masterType,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_futrue_basic
+		(content,type,master_id,trade_date,update_time
+		,status,master_type)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.content},
+			#{item.type},
+			#{item.masterId},
+			#{item.tradeDate},
+			#{item.updateTime},
+			#{item.status},
+			#{item.masterType})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.futruebasic.model.Futruebasic">
+		UPDATE t_futrue_basic
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="tradeDate != null">
+				trade_date =
+				#{tradeDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time =
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="masterType != null">
+				master_type =
+				#{masterType,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_futrue_basic
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_futrue_basic
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_futrue_basic
+	</select>
+
+	<select id="findByMasterId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" /> FROM
+		t_futrue_basic tfb WHERE tfb.master_id=#{masterId} AND
+		trade_date=(SELECT
+		max(trade_date) tradeDate FROM t_futrue_basic WHERE
+		master_id=#{masterId}) limit 1
+	</select>
+</mapper>

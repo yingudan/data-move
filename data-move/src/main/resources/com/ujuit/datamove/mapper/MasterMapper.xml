@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ujuit.datamove.master.model.Master">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.master.model.Master">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="initialCapital" property="initialcapital"
+			jdbcType="DECIMAL" />
+		<result column="availableCapital" property="availablecapital"
+			jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="password"
+			jdbcType="VARCHAR" />
+		<result column="futuresCompany" property="futurescompany"
+			jdbcType="VARCHAR" />
+		<result column="theirBroker" property="theirbroker"
+			jdbcType="VARCHAR" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="tsbId" property="tsbid" jdbcType="INTEGER" />
+		<result column="tsInfoId" property="tsinfoid"
+			jdbcType="INTEGER" />
+		<result column="tab" property="tab" jdbcType="BIT" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+		<result column="trade_type" property="tradeType"
+			jdbcType="INTEGER" />
+		<result column="trade_account" property="tradeAccount"
+			jdbcType="VARCHAR" />
+		<result column="trade_password" property="tradePassword"
+			jdbcType="VARCHAR" />
+		<result column="credit" property="credit" jdbcType="BIT" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="over_time" property="overTime"
+			jdbcType="VARCHAR" />
+		<result column="virtual_allmoney" property="virtualAllmoney"
+			jdbcType="DECIMAL" />
+		<result column="virtual_disposition"
+			property="virtualDisposition" jdbcType="DECIMAL" />
+		<result column="descrp" property="descrp" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="future_company_id" property="futureCompanyId"
+			jdbcType="INTEGER" />
+		<result column="exception_status" property="exceptionStatus"
+			jdbcType="VARCHAR" />
+		<result column="category" property="category"
+			jdbcType="VARCHAR" />
+		<result column="thirdCapital" property="thirdcapital"
+			jdbcType="DECIMAL" />
+		<result column="exception_message" property="exceptionMessage"
+			jdbcType="VARCHAR" />
+		<result column="login_exception_status"
+			property="loginExceptionStatus" jdbcType="VARCHAR" />
+		<result column="login_exception_message"
+			property="loginExceptionMessage" jdbcType="VARCHAR" />
+		<result column="master_group_id" property="masterGroupId"
+			jdbcType="INTEGER" />
+		<result column="auth_code" property="authCode"
+			jdbcType="VARCHAR" />
+		<result column="app_id" property="appId" jdbcType="VARCHAR" />
+		<result column="secret_key" property="secretKey"
+			jdbcType="VARCHAR" />
+		<result column="user_product_info" property="userProductInfo"
+			jdbcType="VARCHAR" />
+		<result column="parts" property="parts" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<resultMap id="BaseResultMapV2"
+		type="com.ujuit.datamove.master.model.Master">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="initialCapital" property="initialcapital"
+			jdbcType="DECIMAL" />
+		<result column="availableCapital" property="availablecapital"
+			jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="password"
+			jdbcType="VARCHAR" />
+		<result column="futuresCompany" property="futurescompany"
+			jdbcType="VARCHAR" />
+		<result column="theirBroker" property="theirbroker"
+			jdbcType="VARCHAR" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="tsbId" property="tsbid" jdbcType="INTEGER" />
+		<result column="tsInfoId" property="tsinfoid"
+			jdbcType="INTEGER" />
+		<result column="tab" property="tab" jdbcType="BIT" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+		<result column="trade_type" property="tradeType"
+			jdbcType="INTEGER" />
+		<result column="trade_account" property="tradeAccount"
+			jdbcType="VARCHAR" />
+		<result column="trade_password" property="tradePassword"
+			jdbcType="VARCHAR" />
+		<result column="credit" property="credit" jdbcType="BIT" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="over_time" property="overTime"
+			jdbcType="VARCHAR" />
+		<result column="virtual_allmoney" property="virtualAllmoney"
+			jdbcType="DECIMAL" />
+		<result column="virtual_disposition"
+			property="virtualDisposition" jdbcType="DECIMAL" />
+		<result column="descrp" property="descrp" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="future_company_id" property="futureCompanyId"
+			jdbcType="INTEGER" />
+		<result column="exception_status" property="exceptionStatus"
+			jdbcType="VARCHAR" />
+		<result column="category" property="category"
+			jdbcType="VARCHAR" />
+		<result column="thirdCapital" property="thirdcapital"
+			jdbcType="DECIMAL" />
+		<result column="exception_message" property="exceptionMessage"
+			jdbcType="VARCHAR" />
+		<result column="login_exception_status"
+			property="loginExceptionStatus" jdbcType="VARCHAR" />
+		<result column="login_exception_message"
+			property="loginExceptionMessage" jdbcType="VARCHAR" />
+		<result column="master_group_id" property="masterGroupId"
+			jdbcType="INTEGER" />
+		<result column="auth_code" property="authCode"
+			jdbcType="VARCHAR" />
+		<result column="app_id" property="appId" jdbcType="VARCHAR" />
+		<result column="secret_key" property="secretKey"
+			jdbcType="VARCHAR" />
+		<result column="user_product_info" property="userProductInfo"
+			jdbcType="VARCHAR" />
+		<result column="parts" property="parts" jdbcType="DECIMAL" />
+		<result column="new_id" property="newId" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,type,company,initialCapital,availableCapital,status,account,password,futuresCompany,theirBroker,collateral,tsbId,tsInfoId,tab,disposition,trade_type,trade_account,trade_password,credit,capital_amount
+		,over_time,virtual_allmoney,virtual_disposition,descrp,create_time,future_company_id,exception_status,category,thirdCapital,exception_message,login_exception_status,login_exception_message,master_group_id,auth_code,app_id,secret_key,user_product_info,parts
+	</sql>
+
+	<sql id="Base_Column_List_V2">
+		id,type,company,initialCapital,availableCapital,status,account,password,futuresCompany,theirBroker,collateral,tsbId,tsInfoId,tab,disposition,trade_type,trade_account,trade_password,credit,capital_amount
+		,over_time,virtual_allmoney,virtual_disposition,descrp,create_time,future_company_id,exception_status,category,thirdCapital,exception_message,login_exception_status,login_exception_message,master_group_id,
+		auth_code,app_id,secret_key,user_product_info,parts,new_id
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.master.model.Master"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_master(
+		type,company,initialCapital,availableCapital,status
+		,account,password,futuresCompany,theirBroker,collateral,tsbId
+		,tsInfoId,tab,disposition,trade_type,trade_account,trade_password
+		,credit,capital_amount,over_time,virtual_allmoney,virtual_disposition,descrp
+		,create_time,future_company_id,exception_status,category,thirdCapital,exception_message
+		,login_exception_status,login_exception_message,master_group_id,auth_code,app_id,secret_key
+		,user_product_info,parts)
+		values (
+		#{type,jdbcType=VARCHAR},#{company,jdbcType=VARCHAR},#{initialcapital,jdbcType=DECIMAL},#{availablecapital,jdbcType=DECIMAL}
+		,#{status,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{futurescompany,jdbcType=VARCHAR},#{theirbroker,jdbcType=VARCHAR}
+		,#{collateral,jdbcType=DECIMAL},#{tsbid,jdbcType=INTEGER},#{tsinfoid,jdbcType=INTEGER},#{tab,jdbcType=BIT},#{disposition,jdbcType=DECIMAL}
+		,#{tradeType,jdbcType=INTEGER},#{tradeAccount,jdbcType=VARCHAR},#{tradePassword,jdbcType=VARCHAR},#{credit,jdbcType=BIT},#{capitalAmount,jdbcType=DECIMAL}
+		,#{overTime,jdbcType=VARCHAR},#{virtualAllmoney,jdbcType=DECIMAL},#{virtualDisposition,jdbcType=DECIMAL},#{descrp,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}
+		,#{futureCompanyId,jdbcType=INTEGER},#{exceptionStatus,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{thirdcapital,jdbcType=DECIMAL},#{exceptionMessage,jdbcType=VARCHAR}
+		,#{loginExceptionStatus,jdbcType=VARCHAR},#{loginExceptionMessage,jdbcType=VARCHAR},#{masterGroupId,jdbcType=INTEGER},#{authCode,jdbcType=VARCHAR},#{appId,jdbcType=VARCHAR}
+		,#{secretKey,jdbcType=VARCHAR},#{userProductInfo,jdbcType=VARCHAR},#{parts,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_master
+		(type,company,initialCapital,availableCapital,status
+		,account,password,futuresCompany,theirBroker,collateral,tsbId
+		,tsInfoId,tab,disposition,trade_type,trade_account,trade_password
+		,credit,capital_amount,over_time,virtual_allmoney,virtual_disposition,descrp
+		,create_time,future_company_id,exception_status,category,thirdCapital,exception_message
+		,login_exception_status,login_exception_message,master_group_id,auth_code,app_id,secret_key
+		,user_product_info,parts) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.type},
+			#{item.company},
+			#{item.initialcapital},
+			#{item.availablecapital},
+			#{item.status},
+			#{item.account},
+			#{item.password},
+			#{item.futurescompany},
+			#{item.theirbroker},
+			#{item.collateral},
+			#{item.tsbid},
+			#{item.tsinfoid},
+			#{item.tab},
+			#{item.disposition},
+			#{item.tradeType},
+			#{item.tradeAccount},
+			#{item.tradePassword},
+			#{item.credit},
+			#{item.capitalAmount},
+			#{item.overTime},
+			#{item.virtualAllmoney},
+			#{item.virtualDisposition},
+			#{item.descrp},
+			#{item.createTime},
+			#{item.futureCompanyId},
+			#{item.exceptionStatus},
+			#{item.category},
+			#{item.thirdcapital},
+			#{item.exceptionMessage},
+			#{item.loginExceptionStatus},
+			#{item.loginExceptionMessage},
+			#{item.masterGroupId},
+			#{item.authCode},
+			#{item.appId},
+			#{item.secretKey},
+			#{item.userProductInfo},
+			#{item.parts})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.master.model.Master">
+		UPDATE t_master
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				company = #{company,jdbcType=VARCHAR},
+			</if>
+			<if test="initialcapital != null">
+				initialCapital =
+				#{initialcapital,jdbcType=DECIMAL},
+			</if>
+			<if test="availablecapital != null">
+				availableCapital =
+				#{availablecapital,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="account != null">
+				account = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password =
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="futurescompany != null">
+				futuresCompany =
+				#{futurescompany,jdbcType=VARCHAR},
+			</if>
+			<if test="theirbroker != null">
+				theirBroker =
+				#{theirbroker,jdbcType=VARCHAR},
+			</if>
+			<if test="collateral != null">
+				collateral =
+				#{collateral,jdbcType=DECIMAL},
+			</if>
+			<if test="tsbid != null">
+				tsbId = #{tsbid,jdbcType=INTEGER},
+			</if>
+			<if test="tsinfoid != null">
+				tsInfoId =
+				#{tsinfoid,jdbcType=INTEGER},
+			</if>
+			<if test="tab != null">
+				tab = #{tab,jdbcType=BIT},
+			</if>
+			<if test="disposition != null">
+				disposition =
+				#{disposition,jdbcType=DECIMAL},
+			</if>
+			<if test="tradeType != null">
+				trade_type =
+				#{tradeType,jdbcType=INTEGER},
+			</if>
+			<if test="tradeAccount != null">
+				trade_account =
+				#{tradeAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="tradePassword != null">
+				trade_password =
+				#{tradePassword,jdbcType=VARCHAR},
+			</if>
+			<if test="credit != null">
+				credit = #{credit,jdbcType=BIT},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="overTime != null">
+				over_time =
+				#{overTime,jdbcType=VARCHAR},
+			</if>
+			<if test="virtualAllmoney != null">
+				virtual_allmoney =
+				#{virtualAllmoney,jdbcType=DECIMAL},
+			</if>
+			<if test="virtualDisposition != null">
+				virtual_disposition =
+				#{virtualDisposition,jdbcType=DECIMAL},
+			</if>
+			<if test="descrp != null">
+				descrp = #{descrp,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="futureCompanyId != null">
+				future_company_id =
+				#{futureCompanyId,jdbcType=INTEGER},
+			</if>
+			<if test="exceptionStatus != null">
+				exception_status =
+				#{exceptionStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="category != null">
+				category =
+				#{category,jdbcType=VARCHAR},
+			</if>
+			<if test="thirdcapital != null">
+				thirdCapital =
+				#{thirdcapital,jdbcType=DECIMAL},
+			</if>
+			<if test="exceptionMessage != null">
+				exception_message =
+				#{exceptionMessage,jdbcType=VARCHAR},
+			</if>
+			<if test="loginExceptionStatus != null">
+				login_exception_status =
+				#{loginExceptionStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="loginExceptionMessage != null">
+				login_exception_message =
+				#{loginExceptionMessage,jdbcType=VARCHAR},
+			</if>
+			<if test="masterGroupId != null">
+				master_group_id =
+				#{masterGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="authCode != null">
+				auth_code =
+				#{authCode,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				app_id = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretKey != null">
+				secret_key =
+				#{secretKey,jdbcType=VARCHAR},
+			</if>
+			<if test="userProductInfo != null">
+				user_product_info =
+				#{userProductInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="parts != null">
+				parts = #{parts,jdbcType=DECIMAL},
+			</if>
+			<if test="newId!=null">
+				new_id=#{newId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_master WHERE
+		id=#{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_master
+		WHERE id = #{id}
+	</select>
+
+	<select id="queryAllAddMaster" resultMap="BaseResultMapV2">
+		SELECT
+		<include refid="Base_Column_List_V2" />
+		FROM t_master WHERE new_id IS NULL AND  future_company_id <![CDATA[!=]]>133
+	</select>
+
+<!-- 	<select id="queryAllAddMaster" resultMap="BaseResultMapV2"> -->
+<!-- 		SELECT -->
+<!-- 		<include refid="Base_Column_List_V2" /> -->
+<!-- 		FROM t_master WHERE new_id IS NULL AND  id <![CDATA[>]]>90 -->
+<!-- 	</select> -->
+
+	<select id="queryAllMaster" resultMap="BaseResultMapV2">
+		SELECT
+		<include refid="Base_Column_List_V2" />
+		FROM t_master where  future_company_id <![CDATA[!=]]>133
+	</select>
+
+<!-- 	<select id="queryAllMaster" resultMap="BaseResultMapV2"> -->
+<!-- 		SELECT -->
+<!-- 		<include refid="Base_Column_List_V2" /> -->
+<!-- 		FROM t_master WHERE  id <![CDATA[>]]>90 -->
+<!-- 	</select> -->
+</mapper>

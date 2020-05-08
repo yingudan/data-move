@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.hissettlement.model.Hissettlement">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.hissettlement.model.Hissettlement">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="trade_date" property="tradeDate"
+			jdbcType="TIMESTAMP" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="his_record" property="hisRecord"
+			jdbcType="VARCHAR" />
+		<result column="compare_status" property="compareStatus"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,trade_date,master_id,his_record,compare_status
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.hissettlement.model.Hissettlement"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_his_settlement(
+		id,trade_date,master_id,his_record,compare_status)
+		values (
+		#{id,jdbcType=INTEGER},#{tradeDate,jdbcType=TIMESTAMP},#{masterId,jdbcType=INTEGER},#{hisRecord,jdbcType=VARCHAR},#{compareStatus,jdbcType=VARCHAR}
+
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_his_settlement
+		(trade_date,master_id,his_record,compare_status) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.tradeDate},
+			#{item.masterId},
+			#{item.hisRecord},
+			#{item.compareStatus})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.hissettlement.model.Hissettlement">
+		UPDATE t_his_settlement
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="tradeDate != null">
+				trade_date =
+				#{tradeDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="hisRecord != null">
+				his_record =
+				#{hisRecord,jdbcType=VARCHAR},
+			</if>
+			<if test="compareStatus != null">
+				compare_status =
+				#{compareStatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_his_settlement
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_settlement
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_settlement
+	</select>
+</mapper>

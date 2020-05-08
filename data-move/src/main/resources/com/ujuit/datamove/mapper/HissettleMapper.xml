@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ujuit.datamove.hissettle.model.Hissettle">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.hissettle.model.Hissettle">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="init_equity" property="initEquity"
+			jdbcType="DECIMAL" />
+		<result column="position_profit" property="positionProfit"
+			jdbcType="DECIMAL" />
+		<result column="deal_glod" property="dealGlod"
+			jdbcType="DECIMAL" />
+		<result column="total_assets" property="totalAssets"
+			jdbcType="DECIMAL" />
+		<result column="offset_profit" property="offsetProfit"
+			jdbcType="DECIMAL" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="surplus_amount" property="surplusAmount"
+			jdbcType="DECIMAL" />
+		<result column="cash_amount" property="cashAmount"
+			jdbcType="DECIMAL" />
+		<result column="user_amount" property="userAmount"
+			jdbcType="DECIMAL" />
+		<result column="safety_level" property="safetyLevel"
+			jdbcType="DECIMAL" />
+		<result column="risk_level" property="riskLevel"
+			jdbcType="DECIMAL" />
+		<result column="out_deal_glod" property="outDealGlod"
+			jdbcType="DECIMAL" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="amount" property="amount" jdbcType="DECIMAL" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="pre_assets" property="preAssets"
+			jdbcType="DECIMAL" />
+		<result column="net_worth" property="netWorth"
+			jdbcType="DECIMAL" />
+		<result column="parts" property="parts" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,sub_account_id,type,his_date,init_equity,position_profit,deal_glod,total_assets,offset_profit,cost,surplus_amount,cash_amount,user_amount,safety_level,risk_level,out_deal_glod,capital_amount,amount,create_time,pre_assets
+		,net_worth,parts
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.hissettle.model.Hissettle"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_his_settle(
+		id,sub_account_id,type,his_date,init_equity,position_profit
+		,deal_glod,total_assets,offset_profit,cost,surplus_amount,cash_amount
+		,user_amount,safety_level,risk_level,out_deal_glod,capital_amount,amount
+		,create_time,pre_assets,net_worth,parts)
+		values (
+		#{id,jdbcType=INTEGER},#{subAccountId,jdbcType=INTEGER},#{type,jdbcType=INTEGER},#{hisDate,jdbcType=TIMESTAMP},#{initEquity,jdbcType=DECIMAL}
+		,#{positionProfit,jdbcType=DECIMAL},#{dealGlod,jdbcType=DECIMAL},#{totalAssets,jdbcType=DECIMAL},#{offsetProfit,jdbcType=DECIMAL},#{cost,jdbcType=DECIMAL}
+		,#{surplusAmount,jdbcType=DECIMAL},#{cashAmount,jdbcType=DECIMAL},#{userAmount,jdbcType=DECIMAL},#{safetyLevel,jdbcType=DECIMAL},#{riskLevel,jdbcType=DECIMAL}
+		,#{outDealGlod,jdbcType=DECIMAL},#{capitalAmount,jdbcType=DECIMAL},#{amount,jdbcType=DECIMAL},#{createTime,jdbcType=TIMESTAMP},#{preAssets,jdbcType=DECIMAL}
+		,#{netWorth,jdbcType=DECIMAL},#{parts,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_his_settle
+		(sub_account_id,type,his_date,init_equity,position_profit
+		,deal_glod,total_assets,offset_profit,cost,surplus_amount,cash_amount
+		,user_amount,safety_level,risk_level,out_deal_glod,capital_amount,amount
+		,create_time,pre_assets,net_worth,parts) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.subAccountId},
+			#{item.type},
+			#{item.hisDate},
+			#{item.initEquity},
+			#{item.positionProfit},
+			#{item.dealGlod},
+			#{item.totalAssets},
+			#{item.offsetProfit},
+			#{item.cost},
+			#{item.surplusAmount},
+			#{item.cashAmount},
+			#{item.userAmount},
+			#{item.safetyLevel},
+			#{item.riskLevel},
+			#{item.outDealGlod},
+			#{item.capitalAmount},
+			#{item.amount},
+			#{item.createTime},
+			#{item.preAssets},
+			#{item.netWorth},
+			#{item.parts})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.hissettle.model.Hissettle">
+		UPDATE t_his_settle
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="initEquity != null">
+				init_equity =
+				#{initEquity,jdbcType=DECIMAL},
+			</if>
+			<if test="positionProfit != null">
+				position_profit =
+				#{positionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="dealGlod != null">
+				deal_glod =
+				#{dealGlod,jdbcType=DECIMAL},
+			</if>
+			<if test="totalAssets != null">
+				total_assets =
+				#{totalAssets,jdbcType=DECIMAL},
+			</if>
+			<if test="offsetProfit != null">
+				offset_profit =
+				#{offsetProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="cost != null">
+				cost = #{cost,jdbcType=DECIMAL},
+			</if>
+			<if test="surplusAmount != null">
+				surplus_amount =
+				#{surplusAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="cashAmount != null">
+				cash_amount =
+				#{cashAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="userAmount != null">
+				user_amount =
+				#{userAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="safetyLevel != null">
+				safety_level =
+				#{safetyLevel,jdbcType=DECIMAL},
+			</if>
+			<if test="riskLevel != null">
+				risk_level =
+				#{riskLevel,jdbcType=DECIMAL},
+			</if>
+			<if test="outDealGlod != null">
+				out_deal_glod =
+				#{outDealGlod,jdbcType=DECIMAL},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preAssets != null">
+				pre_assets =
+				#{preAssets,jdbcType=DECIMAL},
+			</if>
+			<if test="netWorth != null">
+				net_worth =
+				#{netWorth,jdbcType=DECIMAL},
+			</if>
+			<if test="parts != null">
+				parts = #{parts,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_his_settle WHERE
+		id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_settle
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_settle
+	</select>
+</mapper>

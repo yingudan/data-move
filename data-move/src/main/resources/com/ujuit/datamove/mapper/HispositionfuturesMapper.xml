@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.hispositionfutures.model.Hispositionfutures">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.hispositionfutures.model.Hispositionfutures">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="total_number" property="totalNumber"
+			jdbcType="INTEGER" />
+		<result column="today_number" property="todayNumber"
+			jdbcType="INTEGER" />
+		<result column="surplus_total_number"
+			property="surplusTotalNumber" jdbcType="INTEGER" />
+		<result column="today_surplus_total_number"
+			property="todaySurplusTotalNumber" jdbcType="INTEGER" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="open_price" property="openPrice"
+			jdbcType="DECIMAL" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="hedge_flag_type" property="hedgeFlagType"
+			jdbcType="VARCHAR" />
+		<result column="last_deal_time" property="lastDealTime"
+			jdbcType="TIMESTAMP" />
+		<result column="last_settlement_price"
+			property="lastSettlementPrice" jdbcType="DECIMAL" />
+		<result column="today_price" property="todayPrice"
+			jdbcType="DECIMAL" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="position_profit" property="positionProfit"
+			jdbcType="DECIMAL" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,name,code,sub_account_id,total_number,today_number,surplus_total_number,today_surplus_total_number,direction,price,open_price,collateral,hedge_flag_type,last_deal_time,last_settlement_price,today_price,his_date,position_profit,create_time
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.hispositionfutures.model.Hispositionfutures"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_his_position_futures(
+		name,code,sub_account_id,total_number,today_number
+		,surplus_total_number,today_surplus_total_number,direction,price,open_price,collateral
+		,hedge_flag_type,last_deal_time,last_settlement_price,today_price,his_date,position_profit
+		,create_time)
+		values (
+		#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{subAccountId,jdbcType=INTEGER},#{totalNumber,jdbcType=INTEGER}
+		,#{todayNumber,jdbcType=INTEGER},#{surplusTotalNumber,jdbcType=INTEGER},#{todaySurplusTotalNumber,jdbcType=INTEGER},#{direction,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL}
+		,#{openPrice,jdbcType=DECIMAL},#{collateral,jdbcType=DECIMAL},#{hedgeFlagType,jdbcType=VARCHAR},#{lastDealTime,jdbcType=TIMESTAMP},#{lastSettlementPrice,jdbcType=DECIMAL}
+		,#{todayPrice,jdbcType=DECIMAL},#{hisDate,jdbcType=TIMESTAMP},#{positionProfit,jdbcType=DECIMAL},#{createTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_his_position_futures
+		(name,code,sub_account_id,total_number,today_number,
+		surplus_total_number,today_surplus_total_number,direction,price,open_price,
+		collateral,hedge_flag_type,last_deal_time,last_settlement_price,today_price,
+		his_date,position_profit,create_time)values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.name},
+			#{item.code},
+			#{item.subAccountId},
+			#{item.totalNumber},
+			#{item.todayNumber},
+			#{item.surplusTotalNumber},
+			#{item.todaySurplusTotalNumber},
+			#{item.direction},
+			#{item.price},
+			#{item.openPrice},
+			#{item.collateral},
+			#{item.hedgeFlagType},
+			#{item.lastDealTime},
+			#{item.lastSettlementPrice},
+			#{item.todayPrice},
+			#{item.hisDate},
+			#{item.positionProfit},
+			#{item.createTime})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.hispositionfutures.model.Hispositionfutures">
+		UPDATE t_his_position_futures
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="totalNumber != null">
+				total_number =
+				#{totalNumber,jdbcType=INTEGER},
+			</if>
+			<if test="todayNumber != null">
+				today_number =
+				#{todayNumber,jdbcType=INTEGER},
+			</if>
+			<if test="surplusTotalNumber != null">
+				surplus_total_number =
+				#{surplusTotalNumber,jdbcType=INTEGER},
+			</if>
+			<if test="todaySurplusTotalNumber != null">
+				today_surplus_total_number =
+				#{todaySurplusTotalNumber,jdbcType=INTEGER},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="openPrice != null">
+				open_price =
+				#{openPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="collateral != null">
+				collateral =
+				#{collateral,jdbcType=DECIMAL},
+			</if>
+			<if test="hedgeFlagType != null">
+				hedge_flag_type =
+				#{hedgeFlagType,jdbcType=VARCHAR},
+			</if>
+			<if test="lastDealTime != null">
+				last_deal_time =
+				#{lastDealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastSettlementPrice != null">
+				last_settlement_price =
+				#{lastSettlementPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="todayPrice != null">
+				today_price =
+				#{todayPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="positionProfit != null">
+				position_profit =
+				#{positionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_his_position_futures WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_position_futures
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_his_position_futures
+	</select>
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.subaccounttemp.model.Subaccounttemp">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.subaccounttemp.model.Subaccounttemp">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="master_account_id" property="masterAccountId"
+			jdbcType="INTEGER" />
+		<result column="create_date" property="createDate"
+			jdbcType="TIMESTAMP" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="mark" property="mark" jdbcType="VARCHAR" />
+		<result column="t_collateral_id" property="tCollateralId"
+			jdbcType="INTEGER" />
+		<result column="t_commission_id" property="tCommissionId"
+			jdbcType="INTEGER" />
+		<result column="t_client_id" property="tClientId"
+			jdbcType="INTEGER" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="disposition" property="disposition"
+			jdbcType="DECIMAL" />
+		<result column="amount" property="amount" jdbcType="DECIMAL" />
+		<result column="surplus_amount" property="surplusAmount"
+			jdbcType="DECIMAL" />
+		<result column="lock_status" property="lockStatus"
+			jdbcType="VARCHAR" />
+		<result column="capital_amount" property="capitalAmount"
+			jdbcType="DECIMAL" />
+		<result column="t_sub_account_id" property="tSubAccountId"
+			jdbcType="INTEGER" />
+		<result column="user_no" property="userNo" jdbcType="VARCHAR" />
+		<result column="close_position" property="closePosition"
+			jdbcType="VARCHAR" />
+		<result column="category" property="category"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,user_id,master_account_id,create_date,type,mark,t_collateral_id,t_commission_id,t_client_id,collateral,disposition,amount,surplus_amount,lock_status,capital_amount,t_sub_account_id,user_no,close_position,category
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.subaccounttemp.model.Subaccounttemp"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_sub_account_temp(
+		user_id,master_account_id,create_date,type,mark
+		,t_collateral_id,t_commission_id,t_client_id,collateral,disposition,amount
+		,surplus_amount,lock_status,capital_amount,t_sub_account_id,user_no,close_position
+		,category,master_group_id)
+		values (
+		#{userId,jdbcType=INTEGER},#{masterAccountId,jdbcType=INTEGER},#{createDate,jdbcType=TIMESTAMP},#{type,jdbcType=VARCHAR}
+		,#{mark,jdbcType=VARCHAR},#{tCollateralId,jdbcType=INTEGER},#{tCommissionId,jdbcType=INTEGER},#{tClientId,jdbcType=INTEGER},#{collateral,jdbcType=DECIMAL}
+		,#{disposition,jdbcType=DECIMAL},#{amount,jdbcType=DECIMAL},#{surplusAmount,jdbcType=DECIMAL},#{lockStatus,jdbcType=VARCHAR},#{capitalAmount,jdbcType=DECIMAL}
+		,#{tSubAccountId,jdbcType=INTEGER},#{userNo,jdbcType=VARCHAR},#{closePosition,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{masterGroupId,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_sub_account_temp
+		(user_id,master_account_id,create_date,type,mark
+		,t_collateral_id,t_commission_id,t_client_id,collateral,disposition,amount
+		,surplus_amount,lock_status,capital_amount,t_sub_account_id,user_no,close_position
+		,category,master_group_id) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.userId},
+			#{item.masterAccountId},
+			#{item.createDate},
+			#{item.type},
+			#{item.mark},
+			#{item.tCollateralId},
+			#{item.tCommissionId},
+			#{item.tClientId},
+			#{item.collateral},
+			#{item.disposition},
+			#{item.amount},
+			#{item.surplusAmount},
+			#{item.lockStatus},
+			#{item.capitalAmount},
+			#{item.tSubAccountId},
+			#{item.userNo},
+			#{item.closePosition},
+			#{item.category},
+			#{item.masterGroupId}
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.subaccounttemp.model.Subaccounttemp">
+		UPDATE t_sub_account_temp
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="masterAccountId != null">
+				master_account_id =
+				#{masterAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date =
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="mark != null">
+				mark = #{mark,jdbcType=VARCHAR},
+			</if>
+			<if test="tCollateralId != null">
+				t_collateral_id =
+				#{tCollateralId,jdbcType=INTEGER},
+			</if>
+			<if test="tCommissionId != null">
+				t_commission_id =
+				#{tCommissionId,jdbcType=INTEGER},
+			</if>
+			<if test="tClientId != null">
+				t_client_id =
+				#{tClientId,jdbcType=INTEGER},
+			</if>
+			<if test="collateral != null">
+				collateral =
+				#{collateral,jdbcType=DECIMAL},
+			</if>
+			<if test="disposition != null">
+				disposition =
+				#{disposition,jdbcType=DECIMAL},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="surplusAmount != null">
+				surplus_amount =
+				#{surplusAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="lockStatus != null">
+				lock_status =
+				#{lockStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="capitalAmount != null">
+				capital_amount =
+				#{capitalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="tSubAccountId != null">
+				t_sub_account_id =
+				#{tSubAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="userNo != null">
+				user_no = #{userNo,jdbcType=VARCHAR},
+			</if>
+			<if test="closePosition != null">
+				close_position =
+				#{closePosition,jdbcType=VARCHAR},
+			</if>
+			<if test="category != null">
+				category =
+				#{category,jdbcType=VARCHAR},
+			</if>
+			<if test="masterGroupId != null">
+				master_group_id =
+				#{masterGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="accountGroupId != null">
+				account_group_id =
+				#{accountGroupId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_sub_account_temp
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_sub_account_temp
+		where id = #{id}
+	</select>
+
+	<select id="findBySubAccountId" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_sub_account_temp
+		where t_sub_account_id = #{subAccountId}
+	</select>
+</mapper>

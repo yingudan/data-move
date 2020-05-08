@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.orderdealfutures.model.Orderdealfutures">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.orderdealfutures.model.Orderdealfutures">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="deal_time" property="dealTime"
+			jdbcType="TIMESTAMP" />
+		<result column="deal_number" property="dealNumber"
+			jdbcType="INTEGER" />
+		<result column="deal_price" property="dealPrice"
+			jdbcType="DECIMAL" />
+		<result column="deal_no" property="dealNo" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="close_position_profit"
+			property="closePositionProfit" jdbcType="DECIMAL" />
+		<result column="collateral" property="collateral"
+			jdbcType="DECIMAL" />
+		<result column="today_close_position_profit"
+			property="todayClosePositionProfit" jdbcType="DECIMAL" />
+		<result column="order_sys_id" property="orderSysId"
+			jdbcType="VARCHAR" />
+		<result column="exchange_id" property="exchangeId"
+			jdbcType="VARCHAR" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="offset_flag" property="offsetFlag"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,order_id,deal_time,deal_number,deal_price,deal_no,remark,create_time,cost,close_position_profit,collateral,today_close_position_profit
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.orderdealfutures.model.Orderdealfutures"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_order_deal_futures(
+		order_id,deal_time,deal_number,deal_price,deal_no
+		,remark,create_time,cost,close_position_profit,collateral,today_close_position_profit
+		)
+		values (
+		#{orderId,jdbcType=INTEGER},#{dealTime,jdbcType=TIMESTAMP},#{dealNumber,jdbcType=INTEGER},#{dealPrice,jdbcType=DECIMAL}
+		,#{dealNo,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{cost,jdbcType=DECIMAL},#{closePositionProfit,jdbcType=DECIMAL}
+		,#{collateral,jdbcType=DECIMAL},#{todayClosePositionProfit,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_order_deal_futures
+		(order_id,deal_time,deal_number,deal_price,deal_no
+		,remark,create_time,cost,close_position_profit,collateral,today_close_position_profit
+		,order_sys_id,exchange_id,direction,offset_flag) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.orderId},
+			#{item.dealTime},
+			#{item.dealNumber},
+			#{item.dealPrice},
+			#{item.dealNo},
+			#{item.remark},
+			#{item.createTime},
+			#{item.cost},
+			#{item.closePositionProfit},
+			#{item.collateral},
+			#{item.todayClosePositionProfit},
+			#{item.orderSysId},
+			#{item.exchangeId},
+			#{item.direction},
+			#{item.offsetFlag})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.orderdealfutures.model.Orderdealfutures">
+		UPDATE t_order_deal_futures
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="dealTime != null">
+				deal_time =
+				#{dealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dealNumber != null">
+				deal_number =
+				#{dealNumber,jdbcType=INTEGER},
+			</if>
+			<if test="dealPrice != null">
+				deal_price =
+				#{dealPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="dealNo != null">
+				deal_no = #{dealNo,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cost != null">
+				cost = #{cost,jdbcType=DECIMAL},
+			</if>
+			<if test="closePositionProfit != null">
+				close_position_profit =
+				#{closePositionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="collateral != null">
+				collateral =
+				#{collateral,jdbcType=DECIMAL},
+			</if>
+			<if test="todayClosePositionProfit != null">
+				today_close_position_profit =
+				#{todayClosePositionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="orderSysId != null">
+				order_sys_id =
+				#{orderSysId,jdbcType=VARCHAR},
+			</if>
+			<if test="exchangeId != null">
+				exchange_id =
+				#{exchangeId,jdbcType=VARCHAR},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="offsetFlag != null">
+				offset_flag =
+				#{offsetFlag,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_order_deal_futures WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_order_deal_futures
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_order_deal_futures
+	</select>
+</mapper>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.profitdetails.model.Profitdetails">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.profitdetails.model.Profitdetails">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="amount" property="amount" jdbcType="DECIMAL" />
+		<result column="create_time" property="create_time"
+			jdbcType="TIMESTAMP" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="sub_account_id" property="subAccountId"
+			jdbcType="INTEGER" />
+		<result column="record_date" property="recordDate"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,amount,create_time,type,remark,master_id,sub_account_id,record_date
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.profitdetails.model.Profitdetails"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_profit_details(
+		id,amount,create_time,type,remark,master_id
+		,sub_account_id,record_date)
+		values (
+		#{id,jdbcType=INTEGER},#{amount,jdbcType=DECIMAL},#{create_time,jdbcType=TIMESTAMP},#{type,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR}
+		,#{masterId,jdbcType=INTEGER},#{subAccountId,jdbcType=INTEGER},#{recordDate,jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_profit_details (amount,create_time,type,remark,master_id
+		,sub_account_id,record_date) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.amount},
+			#{item.create_time},
+			#{item.type},
+			#{item.remark},
+			#{item.masterId},
+			#{item.subAccountId},
+			#{item.recordDate})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.profitdetails.model.Profitdetails">
+		UPDATE t_profit_details
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="create_time != null">
+				create_time =
+				#{create_time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="subAccountId != null">
+				sub_account_id =
+				#{subAccountId,jdbcType=INTEGER},
+			</if>
+			<if test="recordDate != null">
+				record_date =
+				#{recordDate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM t_profit_details
+		WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_profit_details
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_profit_details
+	</select>
+</mapper>

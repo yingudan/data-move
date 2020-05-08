@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.masterfuturesdailyorder.model.Masterfuturesdailyorder">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.masterfuturesdailyorder.model.Masterfuturesdailyorder">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="broker_id" property="brokerId"
+			jdbcType="VARCHAR" />
+		<result column="investor_id" property="investorId"
+			jdbcType="VARCHAR" />
+		<result column="instrument_id" property="instrumentId"
+			jdbcType="VARCHAR" />
+		<result column="order_ref" property="orderRef"
+			jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="order_price_type" property="orderPriceType"
+			jdbcType="VARCHAR" />
+		<result column="direction" property="direction"
+			jdbcType="VARCHAR" />
+		<result column="comb_offset_flag" property="combOffsetFlag"
+			jdbcType="VARCHAR" />
+		<result column="comb_hedge_flag" property="combHedgeFlag"
+			jdbcType="VARCHAR" />
+		<result column="limit_price" property="limitPrice"
+			jdbcType="DECIMAL" />
+		<result column="volume_total_original"
+			property="volumeTotalOriginal" jdbcType="INTEGER" />
+		<result column="time_condition" property="timeCondition"
+			jdbcType="VARCHAR" />
+		<result column="gtd_date" property="gtdDate" jdbcType="VARCHAR" />
+		<result column="volume_condition" property="volumeCondition"
+			jdbcType="VARCHAR" />
+		<result column="min_volume" property="minVolume"
+			jdbcType="INTEGER" />
+		<result column="contingent_condition"
+			property="contingentCondition" jdbcType="VARCHAR" />
+		<result column="stop_price" property="stopPrice"
+			jdbcType="DECIMAL" />
+		<result column="force_close_reason" property="forceCloseReason"
+			jdbcType="VARCHAR" />
+		<result column="auto_suspend" property="autoSuspend"
+			jdbcType="BIT" />
+		<result column="business_unit" property="businessUnit"
+			jdbcType="VARCHAR" />
+		<result column="request_id" property="requestId"
+			jdbcType="INTEGER" />
+		<result column="order_local_id" property="orderLocalId"
+			jdbcType="VARCHAR" />
+		<result column="exchange_id" property="exchangeId"
+			jdbcType="VARCHAR" />
+		<result column="participant_id" property="participantId"
+			jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId"
+			jdbcType="VARCHAR" />
+		<result column="exchange_inst_id" property="exchangeInstId"
+			jdbcType="VARCHAR" />
+		<result column="trader_id" property="traderId"
+			jdbcType="VARCHAR" />
+		<result column="install_id" property="installId"
+			jdbcType="INTEGER" />
+		<result column="order_submit_status"
+			property="orderSubmitStatus" jdbcType="VARCHAR" />
+		<result column="notify_sequence" property="notifySequence"
+			jdbcType="INTEGER" />
+		<result column="trading_day" property="tradingDay"
+			jdbcType="INTEGER" />
+		<result column="settlement_id" property="settlementId"
+			jdbcType="INTEGER" />
+		<result column="order_sys_id" property="orderSysId"
+			jdbcType="VARCHAR" />
+		<result column="order_source" property="orderSource"
+			jdbcType="VARCHAR" />
+		<result column="order_status" property="orderStatus"
+			jdbcType="VARCHAR" />
+		<result column="order_type" property="orderType"
+			jdbcType="VARCHAR" />
+		<result column="volume_traded" property="volumeTraded"
+			jdbcType="INTEGER" />
+		<result column="volume_total" property="volumeTotal"
+			jdbcType="INTEGER" />
+		<result column="insert_date" property="insertDate"
+			jdbcType="TIMESTAMP" />
+		<result column="insert_time" property="insertTime"
+			jdbcType="TIMESTAMP" />
+		<result column="active_time" property="activeTime"
+			jdbcType="VARCHAR" />
+		<result column="suspend_time" property="suspendTime"
+			jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime"
+			jdbcType="VARCHAR" />
+		<result column="cancel_time" property="cancelTime"
+			jdbcType="VARCHAR" />
+		<result column="active_trader_id" property="activeTraderId"
+			jdbcType="VARCHAR" />
+		<result column="clearing_part_id" property="clearingPartId"
+			jdbcType="VARCHAR" />
+		<result column="sequence_no" property="sequenceNo"
+			jdbcType="INTEGER" />
+		<result column="front_id" property="frontId" jdbcType="INTEGER" />
+		<result column="session_id" property="sessionId"
+			jdbcType="INTEGER" />
+		<result column="user_product_info" property="userProductInfo"
+			jdbcType="VARCHAR" />
+		<result column="status_msg" property="statusMsg"
+			jdbcType="VARCHAR" />
+		<result column="active_user_id" property="activeUserId"
+			jdbcType="VARCHAR" />
+		<result column="user_force_close" property="userForceClose"
+			jdbcType="BIT" />
+		<result column="broker_order_seq" property="brokerOrderSeq"
+			jdbcType="INTEGER" />
+		<result column="relative_order_sys_id"
+			property="relativeOrderSysId" jdbcType="VARCHAR" />
+		<result column="zce_total_traded_volume"
+			property="zceTotalTradedVolume" jdbcType="INTEGER" />
+		<result column="branch_id" property="branchId"
+			jdbcType="VARCHAR" />
+		<result column="swap_order" property="swapOrder" jdbcType="BIT" />
+		<result column="invest_unit_id" property="investUnitId"
+			jdbcType="VARCHAR" />
+		<result column="account_id" property="accountId"
+			jdbcType="VARCHAR" />
+		<result column="currency_id" property="currencyId"
+			jdbcType="VARCHAR" />
+		<result column="ip_address" property="ipAddress"
+			jdbcType="VARCHAR" />
+		<result column="mac_address" property="macAddress"
+			jdbcType="VARCHAR" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="fix_status" property="fixStatus"
+			jdbcType="VARCHAR" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,broker_id,investor_id,instrument_id,order_ref,user_id,
+		direction,comb_offset_flag,comb_hedge_flag,limit_price,
+		volume_total_original,force_close_reason,
+		exchange_id,client_id,order_submit_status,trading_day,order_sys_id,
+		order_source,order_status,order_type,volume_traded,volume_total,
+		insert_date,insert_time,suspend_time,update_time,cancel_time,
+		status_msg,active_user_id,user_force_close
+		,account_id,ip_address,master_id,fix_status,order_id,his_date
+	</sql>
+
+	
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.masterfuturesdailyorder.model.Masterfuturesdailyorder"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_master_futures_daily_order(
+		broker_id,investor_id,instrument_id,order_ref,user_id
+		,order_price_type,direction,comb_offset_flag,comb_hedge_flag,limit_price,volume_total_original
+		,time_condition,gtd_date,volume_condition,min_volume,contingent_condition,stop_price
+		,force_close_reason,auto_suspend,business_unit,request_id,order_local_id,exchange_id
+		,participant_id,client_id,exchange_inst_id,trader_id,install_id,order_submit_status
+		,notify_sequence,trading_day,settlement_id,order_sys_id,order_source,order_status
+		,order_type,volume_traded,volume_total,insert_date,insert_time,active_time
+		,suspend_time,update_time,cancel_time,active_trader_id,clearing_part_id,sequence_no
+		,front_id,session_id,user_product_info,status_msg,active_user_id,user_force_close
+		,broker_order_seq,relative_order_sys_id,zce_total_traded_volume,branch_id,swap_order,invest_unit_id
+		,account_id,currency_id,ip_address,mac_address,master_id,fix_status
+		,order_id,cost,his_date)
+		values (
+		#{brokerId,jdbcType=VARCHAR},#{investorId,jdbcType=VARCHAR},#{instrumentId,jdbcType=VARCHAR},#{orderRef,jdbcType=VARCHAR}
+		,#{userId,jdbcType=VARCHAR},#{orderPriceType,jdbcType=VARCHAR},#{direction,jdbcType=VARCHAR},#{combOffsetFlag,jdbcType=VARCHAR},#{combHedgeFlag,jdbcType=VARCHAR}
+		,#{limitPrice,jdbcType=DECIMAL},#{volumeTotalOriginal,jdbcType=INTEGER},#{timeCondition,jdbcType=VARCHAR},#{gtdDate,jdbcType=VARCHAR},#{volumeCondition,jdbcType=VARCHAR}
+		,#{minVolume,jdbcType=INTEGER},#{contingentCondition,jdbcType=VARCHAR},#{stopPrice,jdbcType=DECIMAL},#{forceCloseReason,jdbcType=VARCHAR},#{autoSuspend,jdbcType=BIT}
+		,#{businessUnit,jdbcType=VARCHAR},#{requestId,jdbcType=INTEGER},#{orderLocalId,jdbcType=VARCHAR},#{exchangeId,jdbcType=VARCHAR},#{participantId,jdbcType=VARCHAR}
+		,#{clientId,jdbcType=VARCHAR},#{exchangeInstId,jdbcType=VARCHAR},#{traderId,jdbcType=VARCHAR},#{installId,jdbcType=INTEGER},#{orderSubmitStatus,jdbcType=VARCHAR}
+		,#{notifySequence,jdbcType=INTEGER},#{tradingDay,jdbcType=DATE},#{settlementId,jdbcType=INTEGER},#{orderSysId,jdbcType=VARCHAR},#{orderSource,jdbcType=VARCHAR}
+		,#{orderStatus,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},#{volumeTraded,jdbcType=INTEGER},#{volumeTotal,jdbcType=INTEGER},#{insertDate,jdbcType=TIMESTAMP}
+		,#{insertTime,jdbcType=TIMESTAMP},#{activeTime,jdbcType=VARCHAR},#{suspendTime,jdbcType=VARCHAR},#{updateTime,jdbcType=VARCHAR},#{cancelTime,jdbcType=VARCHAR}
+		,#{activeTraderId,jdbcType=VARCHAR},#{clearingPartId,jdbcType=VARCHAR},#{sequenceNo,jdbcType=INTEGER},#{frontId,jdbcType=INTEGER},#{sessionId,jdbcType=INTEGER}
+		,#{userProductInfo,jdbcType=VARCHAR},#{statusMsg,jdbcType=VARCHAR},#{activeUserId,jdbcType=VARCHAR},#{userForceClose,jdbcType=BIT},#{brokerOrderSeq,jdbcType=INTEGER}
+		,#{relativeOrderSysId,jdbcType=VARCHAR},#{zceTotalTradedVolume,jdbcType=INTEGER},#{branchId,jdbcType=VARCHAR},#{swapOrder,jdbcType=BIT},#{investUnitId,jdbcType=VARCHAR}
+		,#{accountId,jdbcType=VARCHAR},#{currencyId,jdbcType=VARCHAR},#{ipAddress,jdbcType=VARCHAR},#{macAddress,jdbcType=VARCHAR},#{masterId,jdbcType=INTEGER}
+		,#{fixStatus,jdbcType=VARCHAR},#{orderId,jdbcType=INTEGER},#{cost,jdbcType=DECIMAL},#{hisDate,jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_master_futures_daily_order
+		(broker_id,investor_id,instrument_id,order_ref,user_id
+		,order_price_type,direction,comb_offset_flag,comb_hedge_flag,limit_price,volume_total_original
+		,time_condition,gtd_date,volume_condition,min_volume,contingent_condition,stop_price
+		,force_close_reason,auto_suspend,business_unit,request_id,order_local_id,exchange_id
+		,participant_id,client_id,exchange_inst_id,trader_id,install_id,order_submit_status
+		,notify_sequence,trading_day,settlement_id,order_sys_id,order_source,order_status
+		,order_type,volume_traded,volume_total,insert_date,insert_time,active_time
+		,suspend_time,update_time,cancel_time,active_trader_id,clearing_part_id,sequence_no
+		,front_id,session_id,user_product_info,status_msg,active_user_id,user_force_close
+		,broker_order_seq,relative_order_sys_id,zce_total_traded_volume,branch_id,swap_order,invest_unit_id
+		,account_id,currency_id,ip_address,mac_address,master_id,fix_status
+		,order_id,cost,his_date) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.brokerId},
+			#{item.investorId},
+			#{item.instrumentId},
+			#{item.orderRef},
+			#{item.userId},
+			#{item.orderPriceType},
+			#{item.direction},
+			#{item.combOffsetFlag},
+			#{item.combHedgeFlag},
+			#{item.limitPrice},
+			#{item.volumeTotalOriginal},
+			#{item.timeCondition},
+			#{item.gtdDate},
+			#{item.volumeCondition},
+			#{item.minVolume},
+			#{item.contingentCondition},
+			#{item.stopPrice},
+			#{item.forceCloseReason},
+			#{item.autoSuspend},
+			#{item.businessUnit},
+			#{item.requestId},
+			#{item.orderLocalId},
+			#{item.exchangeId},
+			#{item.participantId},
+			#{item.clientId},
+			#{item.exchangeInstId},
+			#{item.traderId},
+			#{item.installId},
+			#{item.orderSubmitStatus},
+			#{item.notifySequence},
+			#{item.tradingDay,jdbcType=DATE},
+			#{item.settlementId},
+			#{item.orderSysId},
+			#{item.orderSource},
+			#{item.orderStatus},
+			#{item.orderType},
+			#{item.volumeTraded},
+			#{item.volumeTotal},
+			#{item.insertDate},
+			#{item.insertTime},
+			#{item.activeTime},
+			#{item.suspendTime},
+			#{item.updateTime},
+			#{item.cancelTime},
+			#{item.activeTraderId},
+			#{item.clearingPartId},
+			#{item.sequenceNo},
+			#{item.frontId},
+			#{item.sessionId},
+			#{item.userProductInfo},
+			#{item.statusMsg},
+			#{item.activeUserId},
+			#{item.userForceClose},
+			#{item.brokerOrderSeq},
+			#{item.relativeOrderSysId},
+			#{item.zceTotalTradedVolume},
+			#{item.branchId},
+			#{item.swapOrder},
+			#{item.investUnitId},
+			#{item.accountId},
+			#{item.currencyId},
+			#{item.ipAddress},
+			#{item.macAddress},
+			#{item.masterId},
+			#{item.fixStatus},
+			#{item.orderId},
+			#{item.cost},
+			#{item.hisDate})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.masterfuturesdailyorder.model.Masterfuturesdailyorder">
+		UPDATE t_master_futures_daily_order
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="brokerId != null">
+				broker_id =
+				#{brokerId,jdbcType=VARCHAR},
+			</if>
+			<if test="investorId != null">
+				investor_id =
+				#{investorId,jdbcType=VARCHAR},
+			</if>
+			<if test="instrumentId != null">
+				instrument_id =
+				#{instrumentId,jdbcType=VARCHAR},
+			</if>
+			<if test="orderRef != null">
+				order_ref =
+				#{orderRef,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="orderPriceType != null">
+				order_price_type =
+				#{orderPriceType,jdbcType=VARCHAR},
+			</if>
+			<if test="direction != null">
+				direction =
+				#{direction,jdbcType=VARCHAR},
+			</if>
+			<if test="combOffsetFlag != null">
+				comb_offset_flag =
+				#{combOffsetFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="combHedgeFlag != null">
+				comb_hedge_flag =
+				#{combHedgeFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="limitPrice != null">
+				limit_price =
+				#{limitPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="volumeTotalOriginal != null">
+				volume_total_original =
+				#{volumeTotalOriginal,jdbcType=INTEGER},
+			</if>
+			<if test="timeCondition != null">
+				time_condition =
+				#{timeCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="gtdDate != null">
+				gtd_date = #{gtdDate,jdbcType=VARCHAR},
+			</if>
+			<if test="volumeCondition != null">
+				volume_condition =
+				#{volumeCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="minVolume != null">
+				min_volume =
+				#{minVolume,jdbcType=INTEGER},
+			</if>
+			<if test="contingentCondition != null">
+				contingent_condition =
+				#{contingentCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="stopPrice != null">
+				stop_price =
+				#{stopPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="forceCloseReason != null">
+				force_close_reason =
+				#{forceCloseReason,jdbcType=VARCHAR},
+			</if>
+			<if test="autoSuspend != null">
+				auto_suspend =
+				#{autoSuspend,jdbcType=BIT},
+			</if>
+			<if test="businessUnit != null">
+				business_unit =
+				#{businessUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="requestId != null">
+				request_id =
+				#{requestId,jdbcType=INTEGER},
+			</if>
+			<if test="orderLocalId != null">
+				order_local_id =
+				#{orderLocalId,jdbcType=VARCHAR},
+			</if>
+			<if test="exchangeId != null">
+				exchange_id =
+				#{exchangeId,jdbcType=VARCHAR},
+			</if>
+			<if test="participantId != null">
+				participant_id =
+				#{participantId,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				client_id =
+				#{clientId,jdbcType=VARCHAR},
+			</if>
+			<if test="exchangeInstId != null">
+				exchange_inst_id =
+				#{exchangeInstId,jdbcType=VARCHAR},
+			</if>
+			<if test="traderId != null">
+				trader_id =
+				#{traderId,jdbcType=VARCHAR},
+			</if>
+			<if test="installId != null">
+				install_id =
+				#{installId,jdbcType=INTEGER},
+			</if>
+			<if test="orderSubmitStatus != null">
+				order_submit_status =
+				#{orderSubmitStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="notifySequence != null">
+				notify_sequence =
+				#{notifySequence,jdbcType=INTEGER},
+			</if>
+			<if test="tradingDay != null">
+				trading_day =
+				#{tradingDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="settlementId != null">
+				settlement_id =
+				#{settlementId,jdbcType=INTEGER},
+			</if>
+			<if test="orderSysId != null">
+				order_sys_id =
+				#{orderSysId,jdbcType=VARCHAR},
+			</if>
+			<if test="orderSource != null">
+				order_source =
+				#{orderSource,jdbcType=VARCHAR},
+			</if>
+			<if test="orderStatus != null">
+				order_status =
+				#{orderStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="orderType != null">
+				order_type =
+				#{orderType,jdbcType=VARCHAR},
+			</if>
+			<if test="volumeTraded != null">
+				volume_traded =
+				#{volumeTraded,jdbcType=INTEGER},
+			</if>
+			<if test="volumeTotal != null">
+				volume_total =
+				#{volumeTotal,jdbcType=INTEGER},
+			</if>
+			<if test="insertDate != null">
+				insert_date =
+				#{insertDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="insertTime != null">
+				insert_time =
+				#{insertTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="activeTime != null">
+				active_time =
+				#{activeTime,jdbcType=VARCHAR},
+			</if>
+			<if test="suspendTime != null">
+				suspend_time =
+				#{suspendTime,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time =
+				#{updateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelTime != null">
+				cancel_time =
+				#{cancelTime,jdbcType=VARCHAR},
+			</if>
+			<if test="activeTraderId != null">
+				active_trader_id =
+				#{activeTraderId,jdbcType=VARCHAR},
+			</if>
+			<if test="clearingPartId != null">
+				clearing_part_id =
+				#{clearingPartId,jdbcType=VARCHAR},
+			</if>
+			<if test="sequenceNo != null">
+				sequence_no =
+				#{sequenceNo,jdbcType=INTEGER},
+			</if>
+			<if test="frontId != null">
+				front_id = #{frontId,jdbcType=INTEGER},
+			</if>
+			<if test="sessionId != null">
+				session_id =
+				#{sessionId,jdbcType=INTEGER},
+			</if>
+			<if test="userProductInfo != null">
+				user_product_info =
+				#{userProductInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="statusMsg != null">
+				status_msg =
+				#{statusMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="activeUserId != null">
+				active_user_id =
+				#{activeUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="userForceClose != null">
+				user_force_close =
+				#{userForceClose,jdbcType=BIT},
+			</if>
+			<if test="brokerOrderSeq != null">
+				broker_order_seq =
+				#{brokerOrderSeq,jdbcType=INTEGER},
+			</if>
+			<if test="relativeOrderSysId != null">
+				relative_order_sys_id =
+				#{relativeOrderSysId,jdbcType=VARCHAR},
+			</if>
+			<if test="zceTotalTradedVolume != null">
+				zce_total_traded_volume =
+				#{zceTotalTradedVolume,jdbcType=INTEGER},
+			</if>
+			<if test="branchId != null">
+				branch_id =
+				#{branchId,jdbcType=VARCHAR},
+			</if>
+			<if test="swapOrder != null">
+				swap_order = #{swapOrder,jdbcType=},
+			</if>
+			<if test="investUnitId != null">
+				invest_unit_id =
+				#{investUnitId,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				account_id =
+				#{accountId,jdbcType=VARCHAR},
+			</if>
+			<if test="currencyId != null">
+				currency_id =
+				#{currencyId,jdbcType=VARCHAR},
+			</if>
+			<if test="ipAddress != null">
+				ip_address =
+				#{ipAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="macAddress != null">
+				mac_address =
+				#{macAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="fixStatus != null">
+				fix_status =
+				#{fixStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="cost != null">
+				cost = #{cost,jdbcType=DECIMAL},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_master_futures_daily_order WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_order
+		where id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_order
+	</select>
+</mapper>

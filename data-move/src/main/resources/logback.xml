@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+
+	<!-- 需要更改 stock-temp-minute-->
+	<property name="log_path" value="logs" />
+	<property name="outTimeDay" value="100" />
+
+	<conversionRule conversionWord="uline"
+		converterClass="com.ujuit.usds.sdk.log.ULineConverter" />
+	<conversionRule conversionWord="uclass"
+		converterClass="com.ujuit.usds.sdk.log.UClassicConverter" />
+		
+		
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+
+	<!-- <appender>是<configuration>的子节点,是负责写日志的组件.<appender>有两个必要属性name和class.name指定appender名称,class指定appender的全限定名. -->
+	<!-- 按规则来划分日志 -->
+	<appender name="allfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/all-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- 指定30天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+		</rollingPolicy>
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<appender name="businessFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/business-%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- 指定${outTimeDay}天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+		</rollingPolicy>
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="business" level="warn" additivity="false">
+		<appender-ref ref="businessFile" />
+		<appender-ref ref="allfile" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<appender name="errorFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/error-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="error" level="warn" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="errorFile" />
+		<appender-ref ref="allfile" />
+	</logger>
+	
+	
+	<appender name="apiFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/api-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="api" level="warn" additivity="false">
+		<appender-ref ref="apiFile" />
+		<appender-ref ref="allfile" />
+	</logger>
+	
+	<appender name="taskFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/task-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="task" level="warn" additivity="false">
+		<appender-ref ref="taskFile" />
+		<appender-ref ref="allfile" />
+	</logger>
+	
+	<appender name="dealFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/deal-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="deal" level="warn" additivity="false">
+		<appender-ref ref="dealFile" />
+		<appender-ref ref="allfile" />
+	</logger>
+	<appender name="orderFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/order-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="order" level="warn" additivity="false">
+		<appender-ref ref="orderFile" />
+		<appender-ref ref="allfile" />
+	</logger>
+		<appender name="otherFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 是否追加写入文件,默认为true -->
+		<append>true</append>
+		<!-- 指定按时间划分日志的规则 -->
+ 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 规则模式/会被当做目录分隔符,可以为相对路径或绝对路径 -->
+			<fileNamePattern>${log_path}/other-%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<!-- 指定100天后删除保存的日志文件 -->
+			<maxHistory>${outTimeDay}</maxHistory>
+
+		</rollingPolicy>
+		
+		<!-- 对日志进行格式化 %n -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %uclass LineNumbers:%uline%n%msg</pattern>
+		</encoder>
+	</appender>
+	<logger name="other" level="warn" additivity="false">
+		<appender-ref ref="otherFile" />
+		<appender-ref ref="allfile" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="all" level="warn" additivity="false">
+		<appender-ref ref="allfile" />
+		<appender-ref ref="console" />
+	</logger>
+	<root level="warn">
+		<appender-ref ref="console" />
+		<appender-ref ref="allfile" />
+	</root>
+
+</configuration>

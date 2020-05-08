@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ujuit.datamove.masterfuturesdailyposition.model.Masterfuturesdailyposition">
+
+	<resultMap id="BaseResultMap"
+		type="com.ujuit.datamove.masterfuturesdailyposition.model.Masterfuturesdailyposition">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="instrument_id" property="instrumentId"
+			jdbcType="VARCHAR" />
+		<result column="broker_id" property="brokerId"
+			jdbcType="VARCHAR" />
+		<result column="master_id" property="masterId"
+			jdbcType="INTEGER" />
+		<result column="investor_id" property="investorId"
+			jdbcType="VARCHAR" />
+		<result column="pos_drection" property="posDrection"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="hedge_flag" property="hedgeFlag"
+			jdbcType="VARCHAR" />
+		<result column="position_date" property="positionDate"
+			jdbcType="VARCHAR" />
+		<result column="yd_position" property="ydPosition"
+			jdbcType="INTEGER" />
+		<result column="position" property="position"
+			jdbcType="INTEGER" />
+		<result column="long_frozen" property="longFrozen"
+			jdbcType="INTEGER" />
+		<result column="short_frozen" property="shortFrozen"
+			jdbcType="INTEGER" />
+		<result column="long_frozen_amount" property="longFrozenAmount"
+			jdbcType="DECIMAL" />
+		<result column="short_frozen_amount"
+			property="shortFrozenAmount" jdbcType="DECIMAL" />
+		<result column="open_volume" property="openVolume"
+			jdbcType="DECIMAL" />
+		<result column="close_volume" property="closeVolume"
+			jdbcType="INTEGER" />
+		<result column="close_amount" property="closeAmount"
+			jdbcType="DECIMAL" />
+		<result column="open_amount" property="openAmount"
+			jdbcType="DECIMAL" />
+		<result column="position_cost" property="positionCost"
+			jdbcType="DECIMAL" />
+		<result column="use_margin" property="useMargin"
+			jdbcType="DECIMAL" />
+		<result column="frozen_margin" property="frozenMargin"
+			jdbcType="DECIMAL" />
+		<result column="frozen_cash" property="frozenCash"
+			jdbcType="DECIMAL" />
+		<result column="frozen_commission" property="frozenCommission"
+			jdbcType="DECIMAL" />
+		<result column="cash_in" property="cashIn" jdbcType="DECIMAL" />
+		<result column="commission" property="commission"
+			jdbcType="DECIMAL" />
+		<result column="close_profit" property="closeProfit"
+			jdbcType="DECIMAL" />
+		<result column="position_profit" property="positionProfit"
+			jdbcType="DECIMAL" />
+		<result column="pre_settlement_price"
+			property="preSettlementPrice" jdbcType="DECIMAL" />
+		<result column="settlement_price" property="settlementPrice"
+			jdbcType="DECIMAL" />
+		<result column="trading_day" property="tradingDay"
+			jdbcType="TIMESTAMP" />
+		<result column="settlement_id" property="settlementId"
+			jdbcType="INTEGER" />
+		<result column="open_cost" property="openCost"
+			jdbcType="DECIMAL" />
+		<result column="exchange_margin" property="exchangeMargin"
+			jdbcType="DECIMAL" />
+		<result column="comb_position" property="combPosition"
+			jdbcType="INTEGER" />
+		<result column="comb_long_frozen" property="combLongFrozen"
+			jdbcType="INTEGER" />
+		<result column="comb_short_frozen" property="combShortFrozen"
+			jdbcType="INTEGER" />
+		<result column="close_profit_by_date"
+			property="closeProfitByDate" jdbcType="DECIMAL" />
+		<result column="close_profit_by_trade"
+			property="closeProfitByTrade" jdbcType="DECIMAL" />
+		<result column="today_position" property="todayPosition"
+			jdbcType="INTEGER" />
+		<result column="margin_rate_by_money"
+			property="marginRateByMoney" jdbcType="DECIMAL" />
+		<result column="margin_rate_by_volume"
+			property="marginRateByVolume" jdbcType="INTEGER" />
+		<result column="strike_frozen" property="strikeFrozen"
+			jdbcType="INTEGER" />
+		<result column="strike_frozen_amount"
+			property="strikeFrozenAmount" jdbcType="DECIMAL" />
+		<result column="abandon_frozen" property="abandonFrozen"
+			jdbcType="INTEGER" />
+		<result column="fix_status" property="fixStatus"
+			jdbcType="VARCHAR" />
+		<result column="his_date" property="hisDate"
+			jdbcType="TIMESTAMP" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,instrument_id,broker_id,master_id,investor_id,pos_drection,create_time,hedge_flag,position_date,yd_position,position,long_frozen,short_frozen,long_frozen_amount,short_frozen_amount,open_volume,close_volume,close_amount,open_amount,position_cost
+		,use_margin,frozen_margin,frozen_cash,frozen_commission,cash_in,commission,close_profit,position_profit,pre_settlement_price,settlement_price,trading_day,settlement_id,open_cost,exchange_margin,comb_position,comb_long_frozen,comb_short_frozen,close_profit_by_date,close_profit_by_trade,today_position
+		,margin_rate_by_money,margin_rate_by_volume,strike_frozen,strike_frozen_amount,abandon_frozen,fix_status,his_date,cost
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.ujuit.datamove.masterfuturesdailyposition.model.Masterfuturesdailyposition"
+		flushCache="true" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		t_master_futures_daily_position(
+		id,instrument_id,broker_id,master_id,investor_id,pos_drection
+		,create_time,hedge_flag,position_date,yd_position,position,long_frozen
+		,short_frozen,long_frozen_amount,short_frozen_amount,open_volume,close_volume,close_amount
+		,open_amount,position_cost,use_margin,frozen_margin,frozen_cash,frozen_commission
+		,cash_in,commission,close_profit,position_profit,pre_settlement_price,settlement_price
+		,trading_day,settlement_id,open_cost,exchange_margin,comb_position,comb_long_frozen
+		,comb_short_frozen,close_profit_by_date,close_profit_by_trade,today_position,margin_rate_by_money,margin_rate_by_volume
+		,strike_frozen,strike_frozen_amount,abandon_frozen,fix_status,his_date,cost
+		)
+		values (
+		#{id,jdbcType=INTEGER},#{instrumentId,jdbcType=VARCHAR},#{brokerId,jdbcType=VARCHAR},#{masterId,jdbcType=INTEGER},#{investorId,jdbcType=VARCHAR}
+		,#{posDrection,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{hedgeFlag,jdbcType=VARCHAR},#{positionDate,jdbcType=VARCHAR},#{ydPosition,jdbcType=INTEGER}
+		,#{position,jdbcType=INTEGER},#{longFrozen,jdbcType=INTEGER},#{shortFrozen,jdbcType=INTEGER},#{longFrozenAmount,jdbcType=DECIMAL},#{shortFrozenAmount,jdbcType=DECIMAL}
+		,#{openVolume,jdbcType=DECIMAL},#{closeVolume,jdbcType=INTEGER},#{closeAmount,jdbcType=DECIMAL},#{openAmount,jdbcType=DECIMAL},#{positionCost,jdbcType=DECIMAL}
+		,#{useMargin,jdbcType=DECIMAL},#{frozenMargin,jdbcType=DECIMAL},#{frozenCash,jdbcType=DECIMAL},#{frozenCommission,jdbcType=DECIMAL},#{cashIn,jdbcType=DECIMAL}
+		,#{commission,jdbcType=DECIMAL},#{closeProfit,jdbcType=DECIMAL},#{positionProfit,jdbcType=DECIMAL},#{preSettlementPrice,jdbcType=DECIMAL},#{settlementPrice,jdbcType=DECIMAL}
+		,#{tradingDay,jdbcType=TIMESTAMP},#{settlementId,jdbcType=INTEGER},#{openCost,jdbcType=DECIMAL},#{exchangeMargin,jdbcType=DECIMAL},#{combPosition,jdbcType=INTEGER}
+		,#{combLongFrozen,jdbcType=INTEGER},#{combShortFrozen,jdbcType=INTEGER},#{closeProfitByDate,jdbcType=DECIMAL},#{closeProfitByTrade,jdbcType=DECIMAL},#{todayPosition,jdbcType=INTEGER}
+		,#{marginRateByMoney,jdbcType=DECIMAL},#{marginRateByVolume,jdbcType=INTEGER},#{strikeFrozen,jdbcType=INTEGER},#{strikeFrozenAmount,jdbcType=DECIMAL},#{abandonFrozen,jdbcType=INTEGER}
+		,#{fixStatus,jdbcType=VARCHAR},#{hisDate,jdbcType=TIMESTAMP},#{cost,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO t_master_futures_daily_position
+		(instrument_id,broker_id,master_id,investor_id,pos_drection
+		,create_time,hedge_flag,position_date,yd_position,position,long_frozen
+		,short_frozen,long_frozen_amount,short_frozen_amount,open_volume,close_volume,close_amount
+		,open_amount,position_cost,use_margin,frozen_margin,frozen_cash,frozen_commission
+		,cash_in,commission,close_profit,position_profit,pre_settlement_price,settlement_price
+		,trading_day,settlement_id,open_cost,exchange_margin,comb_position,comb_long_frozen
+		,comb_short_frozen,close_profit_by_date,close_profit_by_trade,today_position,margin_rate_by_money,margin_rate_by_volume
+		,strike_frozen,strike_frozen_amount,abandon_frozen,fix_status,his_date,cost
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			( #{item.instrumentId},
+			#{item.brokerId},
+			#{item.masterId},
+			#{item.investorId},
+			#{item.posDrection},
+			#{item.createTime},
+			#{item.hedgeFlag},
+			#{item.positionDate},
+			#{item.ydPosition},
+			#{item.position},
+			#{item.longFrozen},
+			#{item.shortFrozen},
+			#{item.longFrozenAmount},
+			#{item.shortFrozenAmount},
+			#{item.openVolume},
+			#{item.closeVolume},
+			#{item.closeAmount},
+			#{item.openAmount},
+			#{item.positionCost},
+			#{item.useMargin},
+			#{item.frozenMargin},
+			#{item.frozenCash},
+			#{item.frozenCommission},
+			#{item.cashIn},
+			#{item.commission},
+			#{item.closeProfit},
+			#{item.positionProfit},
+			#{item.preSettlementPrice},
+			#{item.settlementPrice},
+			#{item.tradingDay},
+			#{item.settlementId},
+			#{item.openCost},
+			#{item.exchangeMargin},
+			#{item.combPosition},
+			#{item.combLongFrozen},
+			#{item.combShortFrozen},
+			#{item.closeProfitByDate},
+			#{item.closeProfitByTrade},
+			#{item.todayPosition},
+			#{item.marginRateByMoney},
+			#{item.marginRateByVolume},
+			#{item.strikeFrozen},
+			#{item.strikeFrozenAmount},
+			#{item.abandonFrozen},
+			#{item.fixStatus},
+			#{item.hisDate},
+			#{item.cost})
+		</foreach>
+	</insert>
+
+	<update id="update"
+		parameterType="com.ujuit.datamove.masterfuturesdailyposition.model.Masterfuturesdailyposition">
+		UPDATE t_master_futures_daily_position
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="instrumentId != null">
+				instrument_id =
+				#{instrumentId,jdbcType=VARCHAR},
+			</if>
+			<if test="brokerId != null">
+				broker_id =
+				#{brokerId,jdbcType=VARCHAR},
+			</if>
+			<if test="masterId != null">
+				master_id =
+				#{masterId,jdbcType=INTEGER},
+			</if>
+			<if test="investorId != null">
+				investor_id =
+				#{investorId,jdbcType=VARCHAR},
+			</if>
+			<if test="posDrection != null">
+				pos_drection =
+				#{posDrection,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time =
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="hedgeFlag != null">
+				hedge_flag =
+				#{hedgeFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="positionDate != null">
+				position_date =
+				#{positionDate,jdbcType=VARCHAR},
+			</if>
+			<if test="ydPosition != null">
+				yd_position =
+				#{ydPosition,jdbcType=INTEGER},
+			</if>
+			<if test="position != null">
+				position =
+				#{position,jdbcType=INTEGER},
+			</if>
+			<if test="longFrozen != null">
+				long_frozen =
+				#{longFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="shortFrozen != null">
+				short_frozen =
+				#{shortFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="longFrozenAmount != null">
+				long_frozen_amount =
+				#{longFrozenAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="shortFrozenAmount != null">
+				short_frozen_amount =
+				#{shortFrozenAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="openVolume != null">
+				open_volume =
+				#{openVolume,jdbcType=DECIMAL},
+			</if>
+			<if test="closeVolume != null">
+				close_volume =
+				#{closeVolume,jdbcType=INTEGER},
+			</if>
+			<if test="closeAmount != null">
+				close_amount =
+				#{closeAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="openAmount != null">
+				open_amount =
+				#{openAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="positionCost != null">
+				position_cost =
+				#{positionCost,jdbcType=DECIMAL},
+			</if>
+			<if test="useMargin != null">
+				use_margin =
+				#{useMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenMargin != null">
+				frozen_margin =
+				#{frozenMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenCash != null">
+				frozen_cash =
+				#{frozenCash,jdbcType=DECIMAL},
+			</if>
+			<if test="frozenCommission != null">
+				frozen_commission =
+				#{frozenCommission,jdbcType=DECIMAL},
+			</if>
+			<if test="cashIn != null">
+				cash_in = #{cashIn,jdbcType=DECIMAL},
+			</if>
+			<if test="commission != null">
+				commission =
+				#{commission,jdbcType=DECIMAL},
+			</if>
+			<if test="closeProfit != null">
+				close_profit =
+				#{closeProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="positionProfit != null">
+				position_profit =
+				#{positionProfit,jdbcType=DECIMAL},
+			</if>
+			<if test="preSettlementPrice != null">
+				pre_settlement_price =
+				#{preSettlementPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="settlementPrice != null">
+				settlement_price =
+				#{settlementPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="tradingDay != null">
+				trading_day =
+				#{tradingDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="settlementId != null">
+				settlement_id =
+				#{settlementId,jdbcType=INTEGER},
+			</if>
+			<if test="openCost != null">
+				open_cost =
+				#{openCost,jdbcType=DECIMAL},
+			</if>
+			<if test="exchangeMargin != null">
+				exchange_margin =
+				#{exchangeMargin,jdbcType=DECIMAL},
+			</if>
+			<if test="combPosition != null">
+				comb_position =
+				#{combPosition,jdbcType=INTEGER},
+			</if>
+			<if test="combLongFrozen != null">
+				comb_long_frozen =
+				#{combLongFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="combShortFrozen != null">
+				comb_short_frozen =
+				#{combShortFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="closeProfitByDate != null">
+				close_profit_by_date =
+				#{closeProfitByDate,jdbcType=DECIMAL},
+			</if>
+			<if test="closeProfitByTrade != null">
+				close_profit_by_trade =
+				#{closeProfitByTrade,jdbcType=DECIMAL},
+			</if>
+			<if test="todayPosition != null">
+				today_position =
+				#{todayPosition,jdbcType=INTEGER},
+			</if>
+			<if test="marginRateByMoney != null">
+				margin_rate_by_money =
+				#{marginRateByMoney,jdbcType=DECIMAL},
+			</if>
+			<if test="marginRateByVolume != null">
+				margin_rate_by_volume =
+				#{marginRateByVolume,jdbcType=INTEGER},
+			</if>
+			<if test="strikeFrozen != null">
+				strike_frozen =
+				#{strikeFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="strikeFrozenAmount != null">
+				strike_frozen_amount =
+				#{strikeFrozenAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="abandonFrozen != null">
+				abandon_frozen =
+				#{abandonFrozen,jdbcType=INTEGER},
+			</if>
+			<if test="fixStatus != null">
+				fix_status =
+				#{fixStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="hisDate != null">
+				his_date =
+				#{hisDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cost != null">
+				cost = #{cost,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		t_master_futures_daily_position WHERE id = #{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_position
+		where id = #{id}
+	</select>
+	
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_master_futures_daily_position
+	</select>
+</mapper>
